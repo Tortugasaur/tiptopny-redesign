@@ -124,7 +124,7 @@ nav a:hover,
   inset: 0;
   background:
     linear-gradient(90deg, rgba(11, 26, 22, 0.9), rgba(11, 26, 22, 0.58) 48%, rgba(11, 26, 22, 0.1)),
-    url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=2400&q=80") center / cover;
+    url("assets/tiptop/blob.png") center / cover;
 }
 
 .hero-content {
@@ -422,6 +422,68 @@ h3 {
   font-size: 1.04rem;
 }
 
+.strategy-section {
+  padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 64px);
+  background: #f2f4f0;
+}
+
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.strategy-grid article {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.strategy-grid span {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--copper);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.strategy-grid p {
+  color: var(--muted);
+}
+
+.photo-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(320px, 1fr);
+  gap: clamp(28px, 7vw, 96px);
+  padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 64px);
+  background: var(--forest);
+  color: #fff;
+}
+
+.photo-section .eyebrow {
+  color: #f3bd73;
+}
+
+.photo-section p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  align-self: start;
+}
+
+.photo-grid img {
+  height: clamp(170px, 22vw, 300px);
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .contact-section {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) minmax(320px, 440px);
@@ -499,8 +561,13 @@ footer a {
   }
 
   .listing-grid,
-  .service-grid {
+  .service-grid,
+  .strategy-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photo-section {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -520,7 +587,12 @@ footer a {
   }
 
   .listing-grid,
-  .service-grid {
+  .service-grid,
+  .strategy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-grid {
     grid-template-columns: 1fr;
   }
 
