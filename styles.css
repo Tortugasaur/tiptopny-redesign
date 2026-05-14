@@ -608,6 +608,19 @@ a:focus-visible, button:focus-visible {
 .frame-meta a:hover { color: var(--brick-deep); }
 .frame-meta span { color: var(--hairline); }
 
+.zillow-link {
+  font-weight: 700;
+  color: var(--brick);
+  border-bottom-color: var(--brick);
+}
+.zillow-link::after {
+  content: "";
+}
+.zillow-link:hover {
+  color: var(--brick-deep);
+  border-bottom-color: var(--brick-deep);
+}
+
 .frames-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
