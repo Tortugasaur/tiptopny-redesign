@@ -138,127 +138,13 @@
           </p>
         </header>
 
-        <article class="frame frame-featured">
-          <div class="frame-pic">
-            <img
-              src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1600&q=80"
-              alt="Brick multifamily building on a Ridgewood block"
-            />
-            <span class="frame-pin"></span>
-            <span class="frame-stamp">Featured</span>
-          </div>
-          <div class="frame-card">
-            <p class="frame-tag">Multifamily &mdash; Ridgewood</p>
-            <h3>16&#8209;unit building, one block from the L &amp; M.</h3>
-            <p class="frame-price">$4,999,900</p>
-            <p class="frame-copy">
-              Rare full-building opportunity in central Ridgewood. Strong reported income, room to bring rents toward
-              market, and ownership that is genuinely listening to offers. Full set-up by phone.
-            </p>
-            <p class="frame-meta">
-              <a href="sms:+17185411077">Text for details</a>
-              <span>/</span>
-              <a href="tel:+17184170100">Call the office</a>
-            </p>
-          </div>
-        </article>
-
-        <div class="frames-grid">
-          <article class="frame">
-            <div class="frame-pic">
-              <img
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80"
-                alt="Brick townhouse on a sunny Bushwick block"
-                loading="lazy"
-              />
-              <span class="frame-pin"></span>
-            </div>
-            <div class="frame-card">
-              <p class="frame-tag">Bushwick &mdash; Legal 12-family</p>
-              <h3>A walk to the L with real, reported income.</h3>
-              <p class="frame-price">$3,998,000</p>
-              <p class="frame-copy">
-                Legal 12-family with strong actual income and J&#8209;51 tax benefit details available on request.
-              </p>
-            </div>
-          </article>
-
-          <article class="frame">
-            <div class="frame-pic">
-              <img
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80"
-                alt="Bushwick six-family house exterior"
-                loading="lazy"
-              />
-              <span class="frame-pin"></span>
-            </div>
-            <div class="frame-card">
-              <p class="frame-tag">Bushwick &mdash; Six-family</p>
-              <h3>Six units in the heart of the neighborhood.</h3>
-              <p class="frame-price">$1,495,000</p>
-              <p class="frame-copy">
-                A six-family in central Bushwick. Text for the full set-up, current rents, and showing options.
-              </p>
-            </div>
-          </article>
-
-          <article class="frame">
-            <div class="frame-pic">
-              <img
-                src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80"
-                alt="Brick three-family home with a small front yard"
-                loading="lazy"
-              />
-              <span class="frame-pin"></span>
-            </div>
-            <div class="frame-card">
-              <p class="frame-tag">Three-family &mdash; Brick</p>
-              <h3>A well-kept brick house, two units expected vacant.</h3>
-              <p class="frame-price">$1,299,000</p>
-              <p class="frame-copy">
-                Well-manicured exterior, deck, yard, and spacious apartments. Set-up and rent roll on request.
-              </p>
-            </div>
-          </article>
-
-          <article class="frame">
-            <div class="frame-pic">
-              <img
-                src="https://images.unsplash.com/photo-1598228723793-52759bba239c?auto=format&fit=crop&w=900&q=80"
-                alt="Expanded ranch home with landscaped entry in East Rockaway"
-                loading="lazy"
-              />
-              <span class="frame-pin"></span>
-            </div>
-            <div class="frame-card">
-              <p class="frame-tag">East Rockaway &mdash; Waverly Park</p>
-              <h3>Expanded ranch &mdash; five beds, three baths.</h3>
-              <p class="frame-price">$1,059,000</p>
-              <p class="frame-copy">
-                Updated finishes, sun room, hardwood floors, and unusually low flood insurance for the area.
-              </p>
-            </div>
-          </article>
-
-          <article class="frame">
-            <div class="frame-pic">
-              <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
-                alt="Bright Queens apartment with hardwood floors"
-                loading="lazy"
-              />
-              <span class="frame-pin"></span>
-            </div>
-            <div class="frame-card">
-              <p class="frame-tag">Flushing &mdash; Apartment</p>
-              <h3>144&#8209;30 Sanford Ave, Apt 4H.</h3>
-              <p class="frame-price">$359,000</p>
-              <p class="frame-copy">
-                A clean, well-priced apartment in a convenient location. Full details and showing times by text.
-              </p>
-            </div>
-          </article>
-        </div>
+        <article class="frame frame-featured" id="featured-mount" hidden></article>
+        <div class="frames-grid" id="listings-mount"></div>
+        <noscript>
+          <p style="margin-top: 24px; font-style: italic; color: var(--muted);">
+            Listings load with JavaScript enabled. Call (718) 417-0100 or text (718) 541-1077 for current set-ups.
+          </p>
+        </noscript>
       </section>
 
       <section class="menu" id="services" aria-labelledby="menu-title">
@@ -371,5 +257,45 @@
         <a class="footer-top" href="#top">Back to top &#9650;</a>
       </div>
     </footer>
+
+    <script>
+      (async () => {
+        const res = await fetch("listings.json");
+        const { listings } = await res.json();
+        const escape = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+
+        const cardInner = (l) => `
+          <div class="frame-pic">
+            <img src="${escape(l.photo)}" alt="${escape(l.photo_alt)}" loading="lazy" />
+            <span class="frame-pin"></span>
+            ${l.featured ? '<span class="frame-stamp">Featured</span>' : ""}
+          </div>
+          <div class="frame-card">
+            <p class="frame-tag">${escape(l.neighborhood)} &mdash; ${escape(l.type)}</p>
+            <h3>${escape(l.headline)}</h3>
+            <p class="frame-price">${escape(l.price)}</p>
+            <p class="frame-copy">${escape(l.description)}</p>
+            <p class="frame-meta">
+              <a class="zillow-link" href="${escape(l.zillow_url)}" target="_blank" rel="noopener noreferrer">View on Zillow &rarr;</a>
+              <span>/</span>
+              <a href="sms:+17185411077">Text for details</a>
+            </p>
+          </div>
+        `;
+
+        const featured = listings.find((l) => l.featured);
+        const others = listings.filter((l) => !l.featured);
+        const featuredMount = document.getElementById("featured-mount");
+        const listingsMount = document.getElementById("listings-mount");
+
+        if (featured && featuredMount) {
+          featuredMount.innerHTML = cardInner(featured);
+          featuredMount.hidden = false;
+        }
+        listingsMount.innerHTML = others
+          .map((l) => `<article class="frame">${cardInner(l)}</article>`)
+          .join("");
+      })();
+    </script>
   </body>
 </html>
