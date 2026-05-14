@@ -1,14 +1,50 @@
-# TipTop Realty Redesign
+# TipTop Realty — `design/glendale-storefront`
 
-A modern static redesign concept for [TipTop Realty Management Corp.](https://tiptopny.com/), focused on clearer listings, stronger calls-to-action, and a more polished NYC brokerage presentation.
+Queens family-business storefront redesign for TipTop Realty Management Corp.
 
-## What changed
-
-- Replaced repeated hero copy with a clear value proposition.
-- Highlighted sales, rentals, property management, DHCR, and NYC compliance services.
-- Rebuilt listings as structured cards with prices, property type labels, and concise descriptions.
-- Added mobile-friendly layout, sticky navigation, phone/text actions, and directions link.
+Awning stripes (brick red / cream), painted shop-window photo frame,
+handwritten Caveat script accent. Newsreader (warm display serif) + DM Sans
+(humanist body) + Caveat (hand). Polaroid-style listing frames with brick-red
+pins. Listings sit in the shop window; services are "painted on the window."
 
 ## Run locally
 
-Open `index.html` in a browser. No build step is required.
+```bash
+npm run dev   # python3 -m http.server 5173
+```
+
+Then open <http://localhost:5173>.
+
+## Files
+
+- `index.html` — single-page semantic markup, anchor nav
+- `styles.css` — all styles, no framework
+- `favicon.svg` — brick awning with serif "TT"
+
+No build step. No JS framework. Static deploys anywhere (Vercel, Netlify,
+GitHub Pages, S3).
+
+## Swapping the listing photos
+
+Each listing uses an Unsplash URL with `?auto=format&fit=crop&w=...&q=80`
+parameters. To swap in real TipTop photos: replace the `src` on each
+`<article class="frame">` `<img>`. Keep aspect ratios close to 4:3. The
+polaroid frame, brick pin, and rotation effects all work with any photo
+that has a clear subject. Update each `alt` to describe the actual building.
+
+## Polish state
+
+- [x] Favicon (SVG with awning)
+- [x] Open Graph + Twitter card meta
+- [x] Real address, phone, hours, services
+- [x] `tel:` and `sms:` action links
+- [x] Mobile-first responsive
+- [x] Semantic HTML5 landmarks
+- [ ] Real TipTop listing photos (currently Unsplash stock)
+- [ ] Real wordmark (currently typographic via Newsreader shopname)
+- [ ] Lighthouse 90+ verified post-deploy
+
+## Sibling direction
+
+The other surviving direction is on `design/newsprint` — NYC editorial
+newspaper aesthetic. Same content, different visual world.
