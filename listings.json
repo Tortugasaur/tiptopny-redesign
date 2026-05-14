@@ -1,0 +1,88 @@
+{
+  "listings": [
+    {
+      "id": "ridgewood-16-unit",
+      "neighborhood": "Ridgewood",
+      "type": "Multifamily",
+      "price": "$4,999,900",
+      "headline": "16-unit building, one block from the L & M.",
+      "description": "Rare full-building opportunity in central Ridgewood. Strong reported income, room to bring rents toward market, and ownership that is genuinely listening to offers. Full set-up by phone.",
+      "photo": "assets/tiptop/ridgewood-16-unit-multifamily-building.jpg",
+      "photo_alt": "Brick multifamily building on a Ridgewood block",
+      "zillow_url": "https://www.zillow.com/homes/Ridgewood-Queens-NY_rb/",
+      "status": "unknown",
+      "last_synced": null,
+      "featured": true
+    },
+    {
+      "id": "bushwick-12-family",
+      "neighborhood": "Bushwick",
+      "type": "Legal 12-family",
+      "price": "$3,998,000",
+      "headline": "A walk to the L with real, reported income.",
+      "description": "Legal 12-family with strong actual income and J-51 tax benefit details available on request.",
+      "photo": "assets/tiptop/bushwick-legal-12-family-building.jpg",
+      "photo_alt": "Brick townhouse on a sunny Bushwick block",
+      "zillow_url": "https://www.zillow.com/homes/Bushwick-Brooklyn-NY_rb/",
+      "status": "unknown",
+      "last_synced": null,
+      "featured": false
+    },
+    {
+      "id": "bushwick-6-family",
+      "neighborhood": "Bushwick",
+      "type": "Six-family",
+      "price": "$1,495,000",
+      "headline": "Six units in the heart of the neighborhood.",
+      "description": "A six-family in central Bushwick. Text for the full set-up, current rents, and showing options.",
+      "photo": "assets/tiptop/bushwick-six-family-249-stockholm-street.jpg",
+      "photo_alt": "Bushwick six-family house exterior",
+      "zillow_url": "https://www.zillow.com/homes/Bushwick-Brooklyn-NY_rb/",
+      "status": "unknown",
+      "last_synced": null,
+      "featured": false
+    },
+    {
+      "id": "brick-3-family",
+      "neighborhood": "Three-family",
+      "type": "Brick",
+      "price": "$1,299,000",
+      "headline": "A well-kept brick house, two units expected vacant.",
+      "description": "Well-manicured exterior, deck, yard, and spacious apartments. Set-up and rent roll on request.",
+      "photo": "assets/tiptop/brick-three-family-exterior.jpg",
+      "photo_alt": "Brick three-family home with a small front yard",
+      "zillow_url": "https://www.zillow.com/homes/Queens-NY_rb/",
+      "status": "unknown",
+      "last_synced": null,
+      "featured": false
+    },
+    {
+      "id": "east-rockaway-ranch",
+      "neighborhood": "East Rockaway",
+      "type": "Waverly Park ranch",
+      "price": "$1,059,000",
+      "headline": "Expanded ranch — five beds, three baths.",
+      "description": "Updated finishes, sun room, hardwood floors, and unusually low flood insurance for the area.",
+      "photo": "assets/tiptop/east-rockaway-waverly-park-ranch.jpg",
+      "photo_alt": "Expanded ranch home with landscaped entry in East Rockaway",
+      "zillow_url": "https://www.zillow.com/homes/East-Rockaway-NY_rb/",
+      "status": "unknown",
+      "last_synced": null,
+      "featured": false
+    },
+    {
+      "id": "flushing-sanford-4h",
+      "neighborhood": "Flushing",
+      "type": "Apartment",
+      "price": "$359,000",
+      "headline": "144-30 Sanford Ave, Apt 4H.",
+      "description": "A clean, well-priced apartment in a convenient location. Full details and showing times by text.",
+      "photo": "assets/tiptop/flushing-sanford-avenue-apartment-building.jpg",
+      "photo_alt": "Bright Queens apartment with hardwood floors",
+      "zillow_url": "https://www.zillow.com/homes/Flushing-Queens-NY_rb/",
+      "status": "unknown",
+      "last_synced": null,
+      "featured": false
+    }
+  ]
+}
