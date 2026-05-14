@@ -6,6 +6,7 @@
   --paper: #fbfaf7;
   --panel: #ffffff;
   --forest: #173d34;
+  --sage: #e7ede7;
   --copper: #b55d38;
   --gold: #d6a557;
   --blue: #244c72;
@@ -122,7 +123,7 @@ nav a:hover,
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(11, 26, 22, 0.86), rgba(11, 26, 22, 0.55) 45%, rgba(11, 26, 22, 0.18)),
+    linear-gradient(90deg, rgba(11, 26, 22, 0.9), rgba(11, 26, 22, 0.58) 48%, rgba(11, 26, 22, 0.1)),
     url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=2400&q=80") center / cover;
 }
 
@@ -176,7 +177,7 @@ h3 {
 }
 
 .hero-copy {
-  max-width: 670px;
+  max-width: 720px;
   color: rgba(255, 255, 255, 0.86);
   font-size: clamp(1.04rem, 2vw, 1.28rem);
 }
@@ -280,6 +281,8 @@ h3 {
 }
 
 .listing-card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: var(--panel);
   border: 1px solid var(--line);
@@ -301,6 +304,9 @@ h3 {
 }
 
 .listing-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 22px;
 }
 
@@ -319,8 +325,27 @@ h3 {
   font-weight: 900;
 }
 
+.property-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 0;
+  margin: 0 0 14px;
+  list-style: none;
+}
+
+.property-facts li {
+  padding: 6px 9px;
+  background: var(--sage);
+  border-radius: 999px;
+  color: #30413c;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .listing-body p:last-child,
 .service-grid p,
+.owner-section p,
 .contact-section p {
   color: var(--muted);
 }
@@ -343,13 +368,58 @@ h3 {
 }
 
 .service-grid article {
+  position: relative;
   min-height: 230px;
   padding: 28px;
   background: var(--forest);
 }
 
+.service-grid article::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  margin-bottom: 22px;
+  background: var(--gold);
+}
+
 .service-grid p {
   color: rgba(255, 255, 255, 0.76);
+}
+
+.owner-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  gap: clamp(28px, 7vw, 96px);
+  padding: clamp(64px, 8vw, 112px) clamp(18px, 5vw, 64px);
+  background: #fff;
+}
+
+.owner-copy p:last-child {
+  max-width: 700px;
+  font-size: clamp(1.03rem, 1.8vw, 1.22rem);
+}
+
+.owner-checklist {
+  border-top: 1px solid var(--line);
+}
+
+.owner-checklist div {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.owner-checklist span {
+  color: var(--copper);
+  font-weight: 900;
+}
+
+.owner-checklist p {
+  margin: 0;
+  font-size: 1.04rem;
 }
 
 .contact-section {
@@ -423,6 +493,7 @@ footer a {
   }
 
   .intro,
+  .owner-section,
   .contact-section {
     grid-template-columns: 1fr;
   }
@@ -455,6 +526,11 @@ footer a {
 
   .listing-card.featured {
     grid-column: auto;
+  }
+
+  .owner-checklist div {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   footer {
