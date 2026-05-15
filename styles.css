@@ -262,7 +262,7 @@ a:focus-visible, button:focus-visible {
 
 .window-frame {
   position: relative;
-  padding: 18px;
+  padding: 18px 18px 46px;
   background: var(--cream-light);
   border: 1px solid var(--wood);
   box-shadow:
@@ -271,13 +271,33 @@ a:focus-visible, button:focus-visible {
     0 18px 40px rgba(60, 30, 15, 0.18);
   transform: rotate(-0.8deg);
 }
-.window-photo {
+.office-photo {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
   background:
-    linear-gradient(180deg, rgba(60, 30, 15, 0.12), rgba(60, 30, 15, 0.42)),
-    url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1600&q=80") center / cover;
-  filter: contrast(1.05) saturate(1.05) sepia(0.06);
+    radial-gradient(circle at 50% 38%, rgba(232, 201, 122, 0.28), transparent 42%),
+    var(--cream-deep);
+  overflow: hidden;
+  isolation: isolate;
+}
+.office-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 58%;
+  filter: contrast(1.03) saturate(0.95) sepia(0.06);
+}
+.office-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(60, 30, 15, 0.04), rgba(60, 30, 15, 0.14)),
+    radial-gradient(circle at 50% 44%, transparent 48%, rgba(60, 30, 15, 0.16) 100%);
 }
 .window-script {
   position: absolute;
