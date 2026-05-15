@@ -1,11 +1,15 @@
-# TipTop Realty — `design/glendale-storefront`
+# TipTop Realty — `design/modern-broker`
 
-Queens family-business storefront redesign for TipTop Realty Management Corp.
+The third demo direction for John. **"What tiptopny.com would look like if a
+2026 broker designer cleaned it up."** Closest in spirit to the active
+tiptopny.com site (red brand, photo-led hero, services + listings + contact
+sections), but with the dated WordPress feel stripped out.
 
-Awning stripes (brick red / cream), painted shop-window photo frame,
-handwritten Caveat script accent. Newsreader (warm display serif) + DM Sans
-(humanist body) + Caveat (hand). Polaroid-style listing frames with brick-red
-pins. Listings sit in the shop window; services are "painted on the window."
+White base, brand red `#c5302a` (echoing the active site), Instrument Serif
+italic accents on top of a confident Inter sans, JetBrains Mono numerics for
+prices. Sticky header with phone CTA, full-bleed photo hero with overlaid
+card, red "specialist services" banner, clean editorial listings grid, dark
+services band, photo-anchored about section, contact card.
 
 ## Run locally
 
@@ -19,39 +23,34 @@ Then open <http://localhost:5173>.
 
 - `index.html` — single-page semantic markup, anchor nav
 - `styles.css` — all styles, no framework
-- `favicon.svg` — brick awning with serif "TT"
+- `favicon.svg` — TT in brand red on white
+- `listings.json` — listings data shared with admin page
+- `admin.html` — internal dashboard mockup (same as on the storefront branch)
+- `tests/` — node --test smoke tests (27 passing)
 
-No build step. No JS framework. Static deploys anywhere (Vercel, Netlify,
-GitHub Pages, S3).
+No build step, no JS framework. Static deploys anywhere.
 
-## Swapping the listing photos
+## Position alongside the other directions
 
-Each listing uses an Unsplash URL with `?auto=format&fit=crop&w=...&q=80`
-parameters. To swap in real TipTop photos: replace the `src` on each
-`<article class="frame">` `<img>`. Keep aspect ratios close to 4:3. The
-polaroid frame, brick pin, and rotation effects all work with any photo
-that has a clear subject. Update each `alt` to describe the actual building.
+| Branch | Aesthetic |
+|---|---|
+| `design/glendale-storefront` | Warm family-business storefront (awning, painted window, hand script). Luigi is actively polishing this one. |
+| `design/newsprint` | NYC editorial newspaper (Fraunces + Source Serif, classifieds-grid, drop cap). |
+| `design/modern-broker` (this) | Clean modern brokerage closest in spirit to the active tiptopny.com — brand red, photo-led, professional. |
 
 ## Polish state
 
-- [x] Favicon (SVG with awning)
+- [x] Favicon (SVG, brand red, modern)
 - [x] Open Graph + Twitter card meta
 - [x] Real address, phone, hours, services
-- [x] `tel:` and `sms:` action links
 - [x] Mobile-first responsive
 - [x] Semantic HTML5 landmarks
-- [x] Real TipTop listing photos (imported from `docs/planning-notes`)
+- [x] Real TipTop listing photos
 - [x] Listings driven by `listings.json` (single source of truth)
 - [x] "View on Zillow" buttons on every listing card
 - [x] Internal admin dashboard at `admin.html` (unlinked from public nav)
 - [ ] Real Zillow URLs from John (placeholders use Zillow search pages)
-- [ ] Real wordmark (currently typographic via Newsreader shopname)
 - [ ] Lighthouse 90+ verified post-deploy
-
-## Sibling direction
-
-The other surviving direction is on `design/newsprint` — NYC editorial
-newspaper aesthetic. Same content, different visual world.
 
 ## Internal admin page
 
