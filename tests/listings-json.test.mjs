@@ -40,6 +40,14 @@ test("every zillow_url is an https URL pointing to zillow.com", () => {
   }
 });
 
+test("listing copy keeps practical deal facts from the active materials", () => {
+  const descriptions = data.listings.map((listing) => listing.description).join(" ");
+
+  for (const fact of ["reported income", "J-51", "rent roll", "vacant", "flood insurance"]) {
+    assert.match(descriptions, new RegExp(fact, "i"), `missing listing fact: ${fact}`);
+  }
+});
+
 test("exactly one listing is featured", () => {
   const featured = data.listings.filter((l) => l.featured === true);
   assert.equal(featured.length, 1, "expected exactly one featured listing");

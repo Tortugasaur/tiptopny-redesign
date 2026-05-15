@@ -17,7 +17,8 @@ test("keeps the Glendale storefront concept", () => {
     'class="shop-nav"',
     'class="window"',
     "A Glendale brokerage on Myrtle Avenue",
-    "Houses, apartments, and buildings",
+    "Houses for sale, rentals, and property management",
+    "handled by hand",
   ];
 
   for (const marker of storefrontMarkers) {
@@ -25,11 +26,29 @@ test("keeps the Glendale storefront concept", () => {
   }
 });
 
+test("uses plainer brokerage labels instead of the cute shop copy", () => {
+  assert.match(html, /Available now/i);
+  assert.match(html, /Services/i);
+  assert.match(html, /Contact the office/i);
+  assert.doesNotMatch(html, /A note from the shop/i);
+  assert.doesNotMatch(html, /Painted on the window/i);
+  assert.doesNotMatch(html, /In the window today/i);
+});
+
 test("header status stays focused on weekday office hours", () => {
   assert.match(html, /Office open <strong>Mon&#8209;Fri 9&#8209;5<\/strong>/);
   assert.doesNotMatch(html, /weekend text/i);
   assert.doesNotMatch(html, /class="open-note"/);
   assert.doesNotMatch(css, /\.open-note\b/);
+});
+
+test("service copy includes active-site operational facts", () => {
+  assert.match(html, /NYC Violation Removal/i);
+  assert.match(html, /DHCR/i);
+  assert.match(html, /NYC Compliance/i);
+  assert.match(html, /Sales/i);
+  assert.match(html, /Rentals/i);
+  assert.match(html, /Property Management/i);
 });
 
 test("storefront uses downloaded TipTop assets instead of stock image URLs", async () => {
@@ -69,6 +88,12 @@ test("primary Glendale lead actions are call and listings", () => {
   assert.match(html, /href="tel:\+17184170100"[^>]*>Call \(718\) 417(?:-|&#8209;)0100/i);
   assert.match(html, /href="#listings"[^>]*>See current listings/i);
   assert.doesNotMatch(html, /Text us:/i);
+});
+
+test("contact offers a low-pressure inquiry path without backend behavior", () => {
+  assert.match(html, /href="mailto:info@tiptopny\.com\?subject=Website%20inquiry"/);
+  assert.match(html, /Send an inquiry/i);
+  assert.doesNotMatch(html, /<form/i);
 });
 
 test("contact map button uses the company Google Maps place link", () => {

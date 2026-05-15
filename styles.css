@@ -408,6 +408,7 @@ a:focus-visible, button:focus-visible {
   border-radius: 3px;
 }
 .btn-ghost:hover { background: var(--ink); color: var(--cream-light); }
+.btn-ghost.wide { width: 100%; justify-content: center; }
 
 .window-tags {
   list-style: none;
@@ -835,6 +836,11 @@ a:focus-visible, button:focus-visible {
   font-weight: 600;
 }
 .bc-list a:hover { color: var(--brick-deep); border-bottom-color: var(--brick-deep); }
+
+.contact-actions {
+  display: grid;
+  gap: 12px;
+}
 
 .visit-note {
   max-width: 560px;
