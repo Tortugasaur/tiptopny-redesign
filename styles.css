@@ -243,6 +243,15 @@ a:focus-visible, button:focus-visible {
   border: 2px solid var(--brick-deep);
   letter-spacing: 0.02em;
 }
+.shop-nav .phone-pill {
+  color: var(--cream-light);
+  padding-inline: 16px;
+  border-left: 2px solid var(--brick-deep);
+  border-right: 2px solid var(--brick-deep);
+}
+.shop-nav .phone-pill:visited,
+.shop-nav .phone-pill:hover,
+.shop-nav .phone-pill:focus { color: var(--cream-light); }
 .phone-pill:hover { background: var(--brick-deep); }
 .phone-pill .ring { font-size: 14px; transform: rotate(-15deg); display: inline-block; }
 

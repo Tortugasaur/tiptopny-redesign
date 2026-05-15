@@ -107,3 +107,11 @@ test("zillow link gets a visible color treatment (brick)", () => {
   assert.ok(block, ".zillow-link rule should exist");
   assert.match(block[0], /var\(--brick\)|#a23a2c|brick/i);
 });
+
+test("nav phone pill keeps white text and side borders", () => {
+  const block = css.match(/\.shop-nav\s+\.phone-pill\s*\{[^}]*\}/);
+  assert.ok(block, ".shop-nav .phone-pill rule should exist");
+  assert.match(block[0], /color:\s*var\(--cream-light\)/);
+  assert.match(block[0], /border-left:\s*2px\s+solid\s+var\(--brick-deep\)/);
+  assert.match(block[0], /border-right:\s*2px\s+solid\s+var\(--brick-deep\)/);
+});
