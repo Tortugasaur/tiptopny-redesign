@@ -40,7 +40,11 @@ that has a clear subject. Update each `alt` to describe the actual building.
 - [x] `tel:` and `sms:` action links
 - [x] Mobile-first responsive
 - [x] Semantic HTML5 landmarks
-- [ ] Real TipTop listing photos (currently Unsplash stock)
+- [x] Real TipTop listing photos (imported from `docs/planning-notes`)
+- [x] Listings driven by `listings.json` (single source of truth)
+- [x] "View on Zillow" buttons on every listing card
+- [x] Internal admin dashboard at `admin.html` (unlinked from public nav)
+- [ ] Real Zillow URLs from John (placeholders use Zillow search pages)
 - [ ] Real wordmark (currently typographic via Newsreader shopname)
 - [ ] Lighthouse 90+ verified post-deploy
 
@@ -48,3 +52,12 @@ that has a clear subject. Update each `alt` to describe the actual building.
 
 The other surviving direction is on `design/newsprint` — NYC editorial
 newspaper aesthetic. Same content, different visual world.
+
+## Internal admin page
+
+`admin.html` is a static mockup of an internal listings dashboard. It
+reads the same `listings.json` as the public site and renders a table
+with status pills (`current` / `needs_sync` / `unknown`) and a no-op
+"Mark synced" button. Not linked from the public navigation; opt-in
+via direct URL `/admin.html`. No auth — defer until John signals he
+wants the dashboard for real.
