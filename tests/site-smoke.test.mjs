@@ -25,6 +25,13 @@ test("keeps the Glendale storefront concept", () => {
   }
 });
 
+test("header status stays focused on weekday office hours", () => {
+  assert.match(html, /Office open <strong>Mon&#8209;Fri 9&#8209;5<\/strong>/);
+  assert.doesNotMatch(html, /weekend text/i);
+  assert.doesNotMatch(html, /class="open-note"/);
+  assert.doesNotMatch(css, /\.open-note\b/);
+});
+
 test("storefront uses downloaded TipTop assets instead of stock image URLs", async () => {
   const assets = await readdir(new URL("../assets/tiptop/", import.meta.url));
 

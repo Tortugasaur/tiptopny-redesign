@@ -183,7 +183,6 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 0 0 2px rgba(126, 149, 104, 0.3);
 }
 .open-text strong { color: var(--butter); font-weight: 700; }
-.open-note { color: var(--hairline); font-style: italic; }
 
 /* =========================================================
    Shop nav
