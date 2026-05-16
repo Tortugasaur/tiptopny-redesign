@@ -19,6 +19,7 @@ Then open <http://localhost:5173>.
 
 - `index.html` — single-page semantic markup, anchor nav
 - `styles.css` — all styles, no framework
+- `assets/tiptop/` — imported listing/storefront photography for review
 - `favicon.svg` — typographic "TT" with red-ink dot
 
 No build step. No JS framework. Static deploys anywhere (Vercel, Netlify,
@@ -26,11 +27,10 @@ GitHub Pages, S3).
 
 ## Swapping the listing photos
 
-Each listing uses an Unsplash URL with `?auto=format&fit=crop&w=...&q=80`
-parameters. To swap in real TipTop photos: replace the `src` on each
-`<article class="listing">` `<img>`. Keep aspect ratios close to 4:3 for
-standard cards and 5:4 for the featured card. Update each `alt` to
-describe the actual building, not "stock photo of NYC".
+Each listing uses imported review photography from `assets/tiptop/`. To swap in
+final TipTop photos: replace the `src` on each `<article class="listing">`
+`<img>`. Keep aspect ratios close to 4:3 for standard cards and 5:4 for the
+featured card. Update each `alt` to describe the actual building.
 
 ## Polish state
 
@@ -40,7 +40,8 @@ describe the actual building, not "stock photo of NYC".
 - [x] `tel:` and `sms:` action links
 - [x] Mobile-first responsive
 - [x] Semantic HTML5 landmarks
-- [ ] Real TipTop listing photos (currently Unsplash stock)
+- [x] Imported listing photos from the Glendale review set
+- [x] Visible listing-data disclaimer for the Anthony/Jack/John review link
 - [ ] Real wordmark (currently typographic via Fraunces masthead)
 - [ ] Lighthouse 90+ verified post-deploy
 

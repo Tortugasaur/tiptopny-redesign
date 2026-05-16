@@ -129,6 +129,20 @@ a:focus-visible, button:focus-visible {
   color: var(--muted);
 }
 
+.edition-note {
+  display: inline-flex;
+  margin: clamp(12px, 2vw, 18px) auto 0;
+  padding: 6px 10px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* =========================================================
    Primary nav
    ========================================================= */
@@ -303,7 +317,7 @@ a:focus-visible, button:focus-visible {
   aspect-ratio: 4 / 5;
   background:
     linear-gradient(180deg, rgba(20, 15, 10, 0.18), rgba(20, 15, 10, 0.48)),
-    url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1600&q=80") center / cover;
+    url("assets/tiptop/brick-three-family-exterior.jpg") center / cover;
   filter: contrast(1.04) saturate(0.85);
   border: 1px solid var(--rule-strong);
 }
@@ -435,6 +449,32 @@ a:focus-visible, button:focus-visible {
   margin: 0 0 10px;
 }
 
+.listing-notice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  margin: clamp(-14px, -1vw, -8px) 0 clamp(22px, 3vw, 32px);
+  padding: 14px 16px;
+  background: rgba(165, 30, 21, 0.06);
+  border-top: 2px solid var(--red);
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+.listing-notice strong {
+  font-family: var(--display);
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.notice-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
 .listing-featured {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
@@ -446,6 +486,7 @@ a:focus-visible, button:focus-visible {
 .listing-featured img {
   aspect-ratio: 5 / 4;
   object-fit: cover;
+  object-position: center 42%;
   width: 100%;
   border: 1px solid var(--rule-strong);
 }
@@ -467,6 +508,20 @@ a:focus-visible, button:focus-visible {
   text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 8px;
+}
+
+.listing-status {
+  display: inline-flex;
+  margin: 0 0 10px;
+  padding: 3px 7px 4px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .listing-price {
@@ -749,6 +804,16 @@ a:focus-visible, button:focus-visible {
 }
 
 @media (max-width: 560px) {
+  body { font-size: 16px; }
+  .masthead-meta { flex-wrap: wrap; row-gap: 4px; }
+  .masthead-title { font-size: clamp(44px, 17vw, 72px); }
+  .edition-note { display: flex; max-width: 34ch; }
+
+  .primary-nav { position: static; }
+  .primary-nav ul { gap: 10px 16px; justify-content: flex-start; font-size: 11px; }
+
+  #lede-title { max-width: none; }
+  .lede-cta > a { width: 100%; justify-content: center; }
   .lede-stats { grid-template-columns: 1fr; }
   .lede-stats > div { border-right: 0; border-bottom: 1px solid var(--rule); }
   .lede-stats > div:last-child { border-bottom: 0; }
