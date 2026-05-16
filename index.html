@@ -49,34 +49,38 @@
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <div class="awning" aria-hidden="true"></div>
-
-    <header class="storefront" role="banner">
-      <a class="shopname" href="#top" aria-label="TipTop Realty Management Corp. home">
-        <span class="shopname-est">A Glendale brokerage on Myrtle Avenue</span>
-        <span class="shopname-main">
-          <span class="word">Tip</span><span class="word top">Top</span>
-        </span>
-        <span class="shopname-sub">Realty Management Corp.</span>
-      </a>
-      <div class="open-sign" role="status" aria-label="Office status: open Monday through Friday">
-        <span class="open-dot"></span>
-        <span class="open-text">Office open <strong>Mon&#8209;Fri 9&#8209;5</strong></span>
-      </div>
-    </header>
-
     <nav class="shop-nav" aria-label="Primary navigation">
-      <a href="#listings">Listings</a>
-      <span class="dot">&bull;</span>
-      <a href="#about">About</a>
-      <span class="dot">&bull;</span>
-      <a href="#services">Services</a>
-      <span class="dot">&bull;</span>
-      <a href="#contact">Contact</a>
-      <a class="phone-pill" href="tel:+17184170100">
-        <span class="ring">&#9742;</span>
-        (718) 417&#8209;0100
+      <a class="nav-brand" href="#top" aria-label="TipTop Realty Management Corp. home">
+        <span class="nav-logo-frame">
+          <img
+            class="nav-logo"
+            src="assets/tiptop/tiptop-realty-original-logo.jpg"
+            alt=""
+          />
+        </span>
       </a>
+      <div class="nav-links">
+        <a href="#listings">Listings</a>
+        <span class="dot">&bull;</span>
+        <a href="#about">About</a>
+        <span class="dot">&bull;</span>
+        <a href="#services">Services</a>
+        <span class="dot">&bull;</span>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <span
+          class="nav-hours"
+          data-office-status="closed"
+          aria-label="Office closed now. Hours are Monday through Friday, 9 to 5."
+        >
+          <span class="hours-dot"></span>Mon&#8209;Fri 9&#8209;5
+        </span>
+        <a class="phone-pill" href="tel:+17184170100">
+          <span class="ring">&#9742;</span>
+          (718) 417&#8209;0100
+        </a>
+      </div>
     </nav>
 
     <main id="main">
@@ -208,35 +212,71 @@
           </p>
         </header>
 
-        <div class="business-card">
-          <div class="card-corner"></div>
-          <p class="bc-eyebrow">The Office</p>
-          <h3>TipTop Realty Management Corp.</h3>
-          <address>
-            61&#8209;06 Myrtle Avenue<br />
-            Glendale, NY 11385
-          </address>
-          <ul class="bc-list">
-            <li>
-              <span class="bc-key">Office</span>
-              <a href="tel:+17184170100">(718) 417&#8209;0100</a>
-            </li>
-            <li>
-              <span class="bc-key">Weekends</span>
-              <a href="sms:+17185411077">Text (718) 541&#8209;1077</a>
-            </li>
-            <li>
-              <span class="bc-key">Hours</span>
-              <span>Mon&ndash;Fri, 9 to 5 &middot; Sat &amp; Sun by appointment</span>
-            </li>
-          </ul>
-          <div class="contact-actions">
-            <a class="btn-brick wide" href="https://maps.app.goo.gl/M4WhyBm2s22YqgWi7" target="_blank" rel="noopener">
-              Open in Google Maps
-            </a>
-            <a class="btn-ghost wide" href="mailto:info@tiptopny.com?subject=Website%20inquiry">
-              Send an inquiry
-            </a>
+        <div class="visit-body">
+          <article class="contact-note office-card">
+            <div class="card-corner"></div>
+            <p class="bc-eyebrow">The Office</p>
+            <h3>TipTop Realty Management Corp.</h3>
+            <address>
+              61&#8209;06 Myrtle Avenue<br />
+              Glendale, NY 11385
+            </address>
+            <ul class="bc-list">
+              <li>
+                <span class="bc-key">Office</span>
+                <a href="tel:+17184170100">(718) 417&#8209;0100</a>
+              </li>
+              <li>
+                <span class="bc-key">Weekends</span>
+                <a href="sms:+17185411077">Text (718) 541&#8209;1077</a>
+              </li>
+              <li>
+                <span class="bc-key">Hours</span>
+                <span>Mon&ndash;Fri, 9 to 5 &middot; Sat &amp; Sun by appointment</span>
+              </li>
+              <li class="bc-social-row">
+                <span class="bc-key">Social</span>
+                <a
+                  class="office-social-icon"
+                  href="https://www.facebook.com/112125607136240"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Visit Facebook"
+                >
+                  <span aria-hidden="true">f</span>
+                </a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="contact-note inquiry-card">
+            <div class="card-corner"></div>
+            <form class="inquiry-form" aria-label="Send an email inquiry">
+              <p class="inquiry-form-title">Drop us a line.</p>
+              <label>
+                Name
+                <input name="name" type="text" autocomplete="name" />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autocomplete="email" required />
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="4"></textarea>
+              </label>
+              <button type="submit" class="btn-brick wide">Send</button>
+            </form>
+          </article>
+
+          <div class="contact-note map-card" aria-label="Map to TipTop Realty Management Corp.">
+            <div class="card-corner"></div>
+            <iframe
+              title="Map to TipTop Realty Management Corp."
+              src="https://www.google.com/maps?q=61-06%20Myrtle%20Avenue%2C%20Glendale%2C%20NY%2011385&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
 
@@ -255,7 +295,6 @@
     </main>
 
     <footer class="storefront-footer" role="contentinfo">
-      <div class="awning awning-flip" aria-hidden="true"></div>
       <div class="footer-grid">
         <p class="footer-name">TipTop Realty Management Corp.</p>
         <p class="footer-meta">
@@ -267,6 +306,61 @@
     </footer>
 
     <script>
+      (() => {
+        const hoursPill = document.querySelector(".nav-hours");
+        if (!hoursPill) return;
+
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/New_York",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          hourCycle: "h23",
+        });
+        const weekdays = new Set(["Mon", "Tue", "Wed", "Thu", "Fri"]);
+
+        const isOfficeOpen = (now = new Date()) => {
+          const parts = Object.fromEntries(formatter.formatToParts(now).map((part) => [part.type, part.value]));
+          const minutes = Number(parts.hour) * 60 + Number(parts.minute);
+          return weekdays.has(parts.weekday) && minutes >= 9 * 60 && minutes < 17 * 60;
+        };
+
+        const updateOfficeStatus = (now = new Date()) => {
+          const open = isOfficeOpen(now);
+          hoursPill.dataset.officeStatus = open ? "open" : "closed";
+          hoursPill.setAttribute(
+            "aria-label",
+            `${open ? "Office open now" : "Office closed now"}. Hours are Monday through Friday, 9 to 5.`
+          );
+        };
+
+        updateOfficeStatus();
+        setInterval(updateOfficeStatus, 60 * 1000);
+      })();
+
+      (() => {
+        const inquiryForm = document.querySelector(".inquiry-form");
+        if (!inquiryForm) return;
+
+        inquiryForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const data = new FormData(inquiryForm);
+          const name = String(data.get("name") || "").trim();
+          const email = String(data.get("email") || "").trim();
+          const message = String(data.get("message") || "").trim();
+          const bodyLines = [];
+
+          if (name) bodyLines.push(`Name: ${name}`);
+          if (email) bodyLines.push(`Email: ${email}`);
+          if (bodyLines.length) bodyLines.push("");
+          bodyLines.push(message || "I would like to speak with TipTop Realty.");
+
+          const subject = encodeURIComponent("Website inquiry");
+          const body = encodeURIComponent(bodyLines.join("\n"));
+          window.location.href = `mailto:info@tiptopny.com?subject=${subject}&body=${body}`;
+        });
+      })();
+
       (async () => {
         const res = await fetch("listings.json");
         const { listings } = await res.json();
