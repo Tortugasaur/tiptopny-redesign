@@ -362,6 +362,19 @@ test("index.html keeps the JSON listings mount flow", () => {
   assert.match(html, /fetch\(["']listings\.json["']\)/);
 });
 
+test("listing cards distinguish the Zillow listing from neighborhood Zillow results", () => {
+  assert.equal(listings.length, 6);
+  assert.match(
+    html,
+    /The East Rockaway card opens its Zillow listing; the remaining Zillow links open\s+neighborhood results while details are being confirmed\./
+  );
+  assert.match(html, /"View this listing on Zillow"/);
+  assert.match(html, /"View neighborhood on Zillow"/);
+  assert.match(html, /\$\{zillowLinkLabel\(l\)\} &rarr;/);
+  assert.match(html, /status === "current"/);
+  assert.doesNotMatch(html, /View on Zillow/);
+});
+
 test("index.html no longer hardcodes the Ridgewood listing markup", () => {
   assert.doesNotMatch(html, /16&#8209;unit building, one block from the L &amp; M/);
 });

@@ -44,9 +44,9 @@ that has a clear subject. Update each `alt` to describe the actual building.
 - [x] Semantic HTML5 landmarks
 - [x] Real TipTop listing photos (imported from `docs/planning-notes`)
 - [x] Listings driven by `listings.json` (single source of truth)
-- [x] "View on Zillow" buttons on every listing card
+- [x] Zillow buttons distinguish the East Rockaway listing from neighborhood results
 - [x] Internal admin dashboard at `admin.html` (unlinked from public nav)
-- [ ] Real Zillow URLs from John (placeholders use Zillow search pages)
+- [ ] Remaining real Zillow URLs from John (draft listings use Zillow neighborhood pages)
 - [ ] Real wordmark (currently typographic via Newsreader shopname)
 - [ ] Lighthouse 90+ verified post-deploy
 

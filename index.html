@@ -143,6 +143,10 @@
             Six listings with prices, set&#8209;ups, and showing details confirmed by phone or text&hairsp;&mdash;
             because New York real estate moves faster than any website.
           </p>
+          <p class="case-note">
+            The East Rockaway card opens its Zillow listing; the remaining Zillow links open
+            neighborhood results while details are being confirmed.
+          </p>
         </header>
 
         <article class="frame frame-featured" id="featured-mount" hidden></article>
@@ -365,6 +369,8 @@
         const res = await fetch("listings.json");
         const { listings } = await res.json();
         const escape = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+        const zillowLinkLabel = (l) =>
+          l.status === "current" ? "View this listing on Zillow" : "View neighborhood on Zillow";
 
         const cardInner = (l) => `
           <div class="frame-pic">
@@ -378,7 +384,7 @@
             <p class="frame-price">${escape(l.price)}</p>
             <p class="frame-copy">${escape(l.description)}</p>
             <p class="frame-meta">
-              <a class="zillow-link" href="${escape(l.zillow_url)}" target="_blank" rel="noopener noreferrer">View on Zillow &rarr;</a>
+              <a class="zillow-link" href="${escape(l.zillow_url)}" target="_blank" rel="noopener noreferrer">${zillowLinkLabel(l)} &rarr;</a>
               <span>/</span>
               <a href="sms:+17185411077">Text for details</a>
             </p>

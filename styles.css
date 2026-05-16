@@ -464,6 +464,13 @@ a:focus-visible, button:focus-visible {
   font-style: italic;
   max-width: 60ch;
 }
+.case-note {
+  margin: 14px 0 0;
+  max-width: 66ch;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
 
 /* "Frame" = polaroid-style picture-frame card */
 .frame { margin: 0; }
