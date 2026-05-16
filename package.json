@@ -1,7 +1,8 @@
 {
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
-    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort"
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "test": "node --test"
   },
   "devDependencies": {
     "vite": "^8.0.13"

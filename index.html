@@ -18,12 +18,9 @@
       property="og:description"
       content="A neighborhood brokerage on Myrtle Avenue. Sales, rentals, property management, and DHCR compliance across Queens and Brooklyn."
     />
-    <meta
-      property="og:image"
-      content="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1200&h=630&q=80"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="assets/tiptop/flushing-sanford-avenue-apartment-building.jpg" />
+    <meta property="og:image:width" content="1800" />
+    <meta property="og:image:height" content="900" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="TipTop Realty Management Corp." />
 
@@ -33,10 +30,7 @@
       name="twitter:description"
       content="A neighborhood brokerage on Myrtle Avenue. Sales, rentals, property management, and DHCR compliance across Queens and Brooklyn."
     />
-    <meta
-      name="twitter:image"
-      content="https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1200&h=630&q=80"
-    />
+    <meta name="twitter:image" content="assets/tiptop/flushing-sanford-avenue-apartment-building.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +38,6 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800;9..144,900&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -62,20 +55,33 @@
         <span>TipTop</span><span class="masthead-ampersand">·</span><span>Realty</span>
       </a>
       <div class="masthead-subtitle">Management Corp. — Established neighborhood brokerage</div>
-      <p class="edition-note">Newsprint concept for partner review — listing data pending final TipTop confirmation</p>
+      <p class="edition-note">Local brokerage record — sales, rentals, management, compliance</p>
     </header>
 
     <nav class="primary-nav" aria-label="Primary navigation">
+      <a class="nav-brand" href="#top" aria-label="TipTop Realty home">
+        <span class="nav-brand-mark">TT</span>
+        <span class="nav-brand-name">TipTop Realty</span>
+      </a>
       <ul>
         <li><a href="#listings">Listings</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Departments</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <a class="phone-link" href="tel:+17184170100">
-        <span class="phone-label">Office</span>
-        <span class="phone-num">(718) 417&#8209;0100</span>
-      </a>
+      <div class="nav-actions">
+        <span
+          class="nav-hours"
+          data-office-status="closed"
+          aria-label="Office closed now. Hours are Monday through Friday, 9 to 5."
+        >
+          <span class="hours-dot"></span>Mon&#8209;Fri 9&#8209;5
+        </span>
+        <a class="phone-link" href="tel:+17184170100">
+          <span class="phone-label">Office</span>
+          <span class="phone-num">(718) 417&#8209;0100</span>
+        </a>
+      </div>
     </nav>
 
     <main id="main">
@@ -101,15 +107,20 @@
             weekends. We've been on these streets a long time.
           </p>
           <div class="lede-cta">
-            <a class="btn-primary" href="#listings">See current listings</a>
+            <a class="btn-primary" href="tel:+17184170100">Call the office</a>
+            <a class="btn-secondary" href="#listings">See current listings</a>
             <a class="btn-secondary" href="sms:+17185411077">Text us: (718) 541&#8209;1077</a>
           </div>
         </div>
         <figure class="lede-figure">
-          <div class="lede-photo" role="img" aria-label="Brick multifamily homes lining a Queens residential block at dusk"></div>
+          <div
+            class="lede-photo"
+            role="img"
+            aria-label="TipTop Realty storefront at 61-06 Myrtle Avenue in Glendale"
+          ></div>
           <figcaption>
-            A block of brick multifamilies in central Queens &#8212; the kind of building TipTop has been quietly
-            transacting on for years.
+            The TipTop storefront on Myrtle Avenue &#8212; a real office for sales, rentals, management, and compliance
+            questions.
           </figcaption>
         </figure>
         <dl class="lede-stats" aria-label="By the numbers">
@@ -139,6 +150,14 @@
         </p>
         <h2 id="about-title">A practical team for complex New York property decisions.</h2>
         <div class="about-grid">
+          <figure class="about-portrait">
+            <img
+              src="assets/tiptop/tiptop-realty-profile-photo.jpg"
+              alt="John, CEO of TipTop Realty Management Corp."
+              loading="lazy"
+            />
+            <figcaption>John, CEO</figcaption>
+          </figure>
           <p>
             TipTop works across residential, multifamily, rental, commercial, and mixed-use properties. The team helps
             clients evaluate opportunities, understand affordability and compliance, and move through each step with
@@ -157,133 +176,29 @@
             <span class="label-num">No. 02</span>
             <span class="label-name">Listings</span>
           </p>
-          <h2 id="listings-title">Current listing notes for review.</h2>
+          <h2 id="listings-title">Current listings.</h2>
           <p class="section-deck">
-            Working listing copy based on the current review set. Availability, photos, exact addresses, and showing
-            details should be confirmed with TipTop before this direction goes public.
+            These are the homes and buildings TipTop is talking about now. Call or text before you head out, and the
+            office will give you the latest setup.
           </p>
         </header>
 
         <aside class="listing-notice" aria-label="Listing data status">
-          <span class="notice-kicker">Data review</span>
-          <strong>Presentation draft, not a live MLS feed.</strong>
-          <span>Call or text the office for verified pricing, availability, and showing details.</span>
+          <span class="notice-kicker">Before you go</span>
+          <strong>Call or text for the latest price, availability, and showing times.</strong>
+          <span>TipTop can walk you through the setup, rent roll, and next appointment.</span>
+          <span>
+            The East Rockaway card opens its Zillow listing; the remaining Zillow links open neighborhood results while details are being confirmed.
+          </span>
         </aside>
 
-        <article class="listing listing-featured">
-          <p class="listing-index">N&#176; 01 &#8212; Featured</p>
-          <img
-            src="assets/tiptop/ridgewood-16-unit-multifamily-building.jpg"
-            alt="Brick multifamily building on a Ridgewood block"
-          />
-          <div class="listing-body">
-            <p class="listing-eyebrow">Multifamily investment &#8212; Ridgewood</p>
-            <p class="listing-status">Pending broker confirmation</p>
-            <h3>A 16-unit building, one block from the L and the M.</h3>
-            <p class="listing-price">$4,999,900</p>
-            <p class="listing-copy">
-              Rare full-building opportunity in central Ridgewood. Strong reported income, room to bring rents toward
-              market, and an ownership group that is genuinely listening to offers. Full setup available by phone.
-            </p>
-            <p class="listing-meta">
-              <a href="sms:+17185411077">Text for details</a>
-              <span class="meta-sep">/</span>
-              <a href="tel:+17184170100">Call the office</a>
-            </p>
-          </div>
-        </article>
-
-        <div class="listing-grid">
-          <article class="listing">
-            <p class="listing-index">N&#176; 02</p>
-            <img
-              src="assets/tiptop/bushwick-legal-12-family-building.jpg"
-              alt="Brick townhouse on a sunny Bushwick block"
-              loading="lazy"
-            />
-            <div class="listing-body">
-              <p class="listing-eyebrow">Bushwick &#8212; Legal 12-family</p>
-              <p class="listing-status">Review draft</p>
-              <h3>A walk to the L with real, reported income.</h3>
-              <p class="listing-price">$3,998,000</p>
-              <p class="listing-copy">
-                A legal 12-family house with strong actual income and J-51 tax benefit details available on request.
-              </p>
-            </div>
-          </article>
-
-          <article class="listing">
-            <p class="listing-index">N&#176; 03</p>
-            <img
-              src="assets/tiptop/bushwick-six-family-249-stockholm-street.jpg"
-              alt="Bushwick six-family house exterior"
-              loading="lazy"
-            />
-            <div class="listing-body">
-              <p class="listing-eyebrow">Bushwick &#8212; Six-family</p>
-              <p class="listing-status">Review draft</p>
-              <h3>Six units in the heart of the neighborhood.</h3>
-              <p class="listing-price">$1,495,000</p>
-              <p class="listing-copy">
-                A six-family in central Bushwick. Text for the full setup, current rents, and showing options.
-              </p>
-            </div>
-          </article>
-
-          <article class="listing">
-            <p class="listing-index">N&#176; 04</p>
-            <img
-              src="assets/tiptop/brick-three-family-exterior.jpg"
-              alt="Brick three-family home with a small front yard"
-              loading="lazy"
-            />
-            <div class="listing-body">
-              <p class="listing-eyebrow">Multifamily home &#8212; Legal three-family</p>
-              <p class="listing-status">Review draft</p>
-              <h3>A well-kept brick house with two units expected vacant.</h3>
-              <p class="listing-price">$1,299,000</p>
-              <p class="listing-copy">
-                Well-manicured exterior, deck, yard, and spacious apartments. Setup and rent roll on request.
-              </p>
-            </div>
-          </article>
-
-          <article class="listing">
-            <p class="listing-index">N&#176; 05</p>
-            <img
-              src="assets/tiptop/east-rockaway-waverly-park-ranch.jpg"
-              alt="Expanded ranch home with landscaped entry in East Rockaway"
-              loading="lazy"
-            />
-            <div class="listing-body">
-              <p class="listing-eyebrow">East Rockaway &#8212; Waverly Park</p>
-              <p class="listing-status">Review draft</p>
-              <h3>Expanded ranch &#8212; five bedrooms, three baths.</h3>
-              <p class="listing-price">$1,059,000</p>
-              <p class="listing-copy">
-                Updated finishes, sun room, hardwood floors, and unusually low flood insurance for the area.
-              </p>
-            </div>
-          </article>
-
-          <article class="listing">
-            <p class="listing-index">N&#176; 06</p>
-            <img
-              src="assets/tiptop/flushing-sanford-avenue-apartment-building.jpg"
-              alt="Flushing Sanford Avenue apartment building exterior"
-              loading="lazy"
-            />
-            <div class="listing-body">
-              <p class="listing-eyebrow">Flushing &#8212; Apartment</p>
-              <p class="listing-status">Review draft</p>
-              <h3>144&#8209;30 Sanford Ave, Apt 4H.</h3>
-              <p class="listing-price">$359,000</p>
-              <p class="listing-copy">
-                A clean, well-priced apartment in a convenient location. Full details and showing times by text.
-              </p>
-            </div>
-          </article>
-        </div>
+        <article class="listing listing-featured" id="featured-listing" hidden></article>
+        <div class="listing-grid" id="listings-mount"></div>
+        <noscript>
+          <p class="listing-fallback">
+            Listings load with JavaScript enabled. Call (718) 417-0100 or text (718) 541-1077 for current details.
+          </p>
+        </noscript>
       </section>
 
       <section class="departments" id="services" aria-labelledby="services-title">
@@ -344,7 +259,7 @@
         </header>
 
         <div class="contact-block">
-          <div class="contact-card">
+          <div class="contact-card office-card">
             <p class="card-label">The Office</p>
             <h3>TipTop Realty Management Corp.</h3>
             <address>
@@ -364,11 +279,61 @@
                 <span class="contact-tag">Hours</span>
                 <span>Mon &#8211; Fri, 9 to 5 &#183; Sat &amp; Sun by appointment</span>
               </li>
+              <li class="contact-social-row">
+                <span class="contact-tag">Social</span>
+                <a
+                  class="office-social-icon"
+                  href="https://www.facebook.com/112125607136240"
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Visit Facebook"
+                >
+                  <span aria-hidden="true">f</span>
+                </a>
+              </li>
             </ul>
-            <a class="btn-primary" href="https://maps.google.com/?q=61-06+Myrtle+Avenue,+Glendale,+NY+11385">
-              Open in Google Maps
+            <div class="contact-actions">
+              <a class="btn-primary" href="tel:+17184170100">Call the office</a>
+              <a class="btn-secondary" href="sms:+17185411077">Text weekends</a>
+            </div>
+          </div>
+
+          <div class="contact-card inquiry-card">
+            <form class="inquiry-form" aria-label="Send an email inquiry">
+              <p class="inquiry-form-title">Drop us a line.</p>
+              <label>
+                Name
+                <input name="name" type="text" autocomplete="name" />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autocomplete="email" required />
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="5"></textarea>
+              </label>
+              <button type="submit" class="btn-primary wide">Send</button>
+            </form>
+          </div>
+
+          <div class="contact-card map-card" aria-label="Map to TipTop Realty Management Corp.">
+            <iframe
+              title="Map to TipTop Realty Management Corp."
+              src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m2!2m1!1s61-06+Myrtle+Avenue,+Glendale,+NY+11385"
+              loading="eager"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <a
+              class="map-fallback-link"
+              href="https://maps.google.com/?q=61-06+Myrtle+Avenue,+Glendale,+NY+11385"
+              target="_blank"
+              rel="noopener"
+            >
+              Open the office in Google Maps
             </a>
           </div>
+
           <aside class="contact-aside">
             <p class="aside-eyebrow">A short note</p>
             <p>
@@ -394,5 +359,144 @@
         <a class="colophon-top" href="#top">Back to top &#8593;</a>
       </div>
     </footer>
+
+    <script>
+      (() => {
+        const masthead = document.querySelector(".masthead");
+        const primaryNav = document.querySelector(".primary-nav");
+        if (!masthead || !primaryNav) return;
+
+        const updateCompactLogo = () => {
+          primaryNav.classList.toggle("has-compact-logo", masthead.getBoundingClientRect().bottom <= 0);
+        };
+
+        if (!("IntersectionObserver" in window)) {
+          updateCompactLogo();
+          window.addEventListener("scroll", updateCompactLogo, { passive: true });
+          window.addEventListener("resize", updateCompactLogo);
+          return;
+        }
+
+        const mastheadObserver = new IntersectionObserver(([entry]) => {
+          primaryNav.classList.toggle("has-compact-logo", !entry.isIntersecting);
+        });
+
+        mastheadObserver.observe(masthead);
+      })();
+
+      (() => {
+        const hoursPill = document.querySelector(".nav-hours");
+        if (!hoursPill) return;
+
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/New_York",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          hourCycle: "h23",
+        });
+        const weekdays = new Set(["Mon", "Tue", "Wed", "Thu", "Fri"]);
+
+        const isOfficeOpen = (now = new Date()) => {
+          const parts = Object.fromEntries(formatter.formatToParts(now).map((part) => [part.type, part.value]));
+          const minutes = Number(parts.hour) * 60 + Number(parts.minute);
+          return weekdays.has(parts.weekday) && minutes >= 9 * 60 && minutes < 17 * 60;
+        };
+
+        const updateOfficeStatus = (now = new Date()) => {
+          const open = isOfficeOpen(now);
+          const officeStatus = open ? "open" : "closed";
+          hoursPill.dataset.officeStatus = officeStatus;
+          hoursPill.setAttribute(
+            "aria-label",
+            `Office ${officeStatus} now. Hours are Monday through Friday, 9 to 5.`
+          );
+        };
+
+        updateOfficeStatus();
+        setInterval(updateOfficeStatus, 60 * 1000);
+      })();
+
+      (() => {
+        const inquiryForm = document.querySelector(".inquiry-form");
+        if (!inquiryForm) return;
+
+        inquiryForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const data = new FormData(inquiryForm);
+          const name = String(data.get("name") || "").trim();
+          const email = String(data.get("email") || "").trim();
+          const message = String(data.get("message") || "").trim();
+          const bodyLines = [];
+
+          if (name) bodyLines.push(`Name: ${name}`);
+          if (email) bodyLines.push(`Email: ${email}`);
+          if (bodyLines.length) bodyLines.push("");
+          bodyLines.push(message || "I would like to speak with TipTop Realty.");
+
+          const subject = encodeURIComponent("Website inquiry");
+          const body = encodeURIComponent(bodyLines.join("\n"));
+          window.location.href = `mailto:info@tiptopny.com?subject=${subject}&body=${body}`;
+        });
+      })();
+
+      (async () => {
+        const featuredMount = document.getElementById("featured-listing");
+        const listingsMount = document.getElementById("listings-mount");
+        if (!featuredMount || !listingsMount) return;
+
+        const escape = (s) =>
+          String(s ?? "").replace(/[&<>"']/g, (c) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          })[c]);
+        const statusLabel = { current: "Current", needs_sync: "Confirm details", unknown: "Call for details" };
+        const zillowLinkLabel = (listing) =>
+          listing.status === "current" ? "View this listing on Zillow" : "View neighborhood on Zillow";
+        const listingNumber = (index) => String(index + 1).padStart(2, "0");
+
+        const listingInner = (listing, index) => `
+          <p class="listing-index">N&#176; ${listingNumber(index)}${listing.featured ? " &#8212; Featured" : ""}</p>
+          <img src="${escape(listing.photo)}" alt="${escape(listing.photo_alt)}"${listing.featured ? "" : ' loading="lazy"'} />
+          <div class="listing-body">
+            <p class="listing-eyebrow">${escape(listing.neighborhood)} &#8212; ${escape(listing.type)}</p>
+            <p class="listing-status">${escape(statusLabel[listing.status] ?? listing.status)}</p>
+            <h3>${escape(listing.headline)}</h3>
+            <p class="listing-price">${escape(listing.price)}</p>
+            <p class="listing-copy">${escape(listing.description)}</p>
+            <p class="listing-meta">
+              <a class="zillow-link" href="${escape(listing.zillow_url)}" target="_blank" rel="noopener noreferrer">${zillowLinkLabel(listing)}</a>
+              <span class="meta-sep">/</span>
+              <a href="sms:+17185411077">Text for details</a>
+            </p>
+          </div>
+        `;
+
+        try {
+          const res = await fetch("listings.json");
+          const { listings } = await res.json();
+          const featured = listings.find((listing) => listing.featured);
+          const others = listings.filter((listing) => !listing.featured);
+
+          if (featured) {
+            featuredMount.innerHTML = listingInner(featured, 0);
+            featuredMount.hidden = false;
+          }
+          listingsMount.innerHTML = others
+            .map((listing, index) => `<article class="listing">${listingInner(listing, index + 1)}</article>`)
+            .join("");
+        } catch (error) {
+          listingsMount.innerHTML = `
+            <p class="listing-fallback">
+              Listings are being updated. Call (718) 417-0100 or text (718) 541-1077 for current details.
+            </p>
+          `;
+          console.error("Unable to load listings.json", error);
+        }
+      })();
+    </script>
   </body>
 </html>

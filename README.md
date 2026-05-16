@@ -21,7 +21,7 @@ server and rerun `npm run dev`.
 
 - `index.html` — single-page semantic markup, anchor nav
 - `styles.css` — all styles, no framework
-- `assets/tiptop/` — imported listing/storefront photography for review
+- `assets/tiptop/` — local TipTop listing, storefront, and profile photography
 - `favicon.svg` — typographic "TT" with red-ink dot
 
 No build step. No JS framework. Static deploys anywhere (Vercel, Netlify,
@@ -29,7 +29,7 @@ GitHub Pages, S3).
 
 ## Swapping the listing photos
 
-Each listing uses imported review photography from `assets/tiptop/`. To swap in
+Each listing uses local TipTop photography from `assets/tiptop/`. To swap in
 final TipTop photos: replace the `src` on each `<article class="listing">`
 `<img>`. Keep aspect ratios close to 4:3 for standard cards and 5:4 for the
 featured card. Update each `alt` to describe the actual building.
@@ -42,8 +42,10 @@ featured card. Update each `alt` to describe the actual building.
 - [x] `tel:` and `sms:` action links
 - [x] Mobile-first responsive
 - [x] Semantic HTML5 landmarks
-- [x] Imported listing photos from the Glendale review set
-- [x] Visible listing-data disclaimer for the Anthony/Jack/John review link
+- [x] Imported listing photos from the TipTop property set
+- [x] Client-facing listing confirmation copy
+- [x] Zillow buttons distinguish the East Rockaway listing from neighborhood results
+- [ ] Remaining real Zillow URLs from John (draft listings use Zillow neighborhood pages)
 - [ ] Real wordmark (currently typographic via Fraunces masthead)
 - [ ] Lighthouse 90+ verified post-deploy
 
