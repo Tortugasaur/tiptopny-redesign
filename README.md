@@ -49,9 +49,9 @@ No build step, no JS framework. Static deploys anywhere.
 - [x] Semantic HTML5 landmarks
 - [x] Real TipTop listing photos
 - [x] Listings driven by `listings.json` (single source of truth)
-- [x] "View on Zillow" buttons on every listing card
+- [x] Zillow buttons distinguish the East Rockaway listing from neighborhood results
 - [x] Internal admin dashboard at `admin.html` (unlinked from public nav)
-- [ ] Real Zillow URLs from John (placeholders use Zillow search pages)
+- [ ] Remaining real Zillow URLs from John (draft listings use Zillow neighborhood pages)
 - [ ] Lighthouse 90+ verified post-deploy
 
 ## Internal admin page

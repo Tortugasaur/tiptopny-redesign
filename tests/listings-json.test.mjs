@@ -45,3 +45,31 @@ test("exactly one listing is featured", () => {
   assert.equal(featured.length, 1, "expected exactly one featured listing");
   assert.equal(featured[0].id, "ridgewood-16-unit");
 });
+
+test("East Rockaway ranch is tracked as the current Zillow-available listing", () => {
+  const listing = data.listings.find((item) => item.id === "east-rockaway-ranch");
+
+  assert.ok(listing, "missing east-rockaway-ranch listing");
+  assert.equal(
+    listing.zillow_url,
+    "https://www.zillow.com/homedetails/6-Cail-Dr-East-Rockaway-NY-11518/31271000_zpid/"
+  );
+  assert.equal(listing.status, "current");
+  assert.equal(listing.last_synced, "2026-05-16");
+
+  const currentListings = data.listings.filter((item) => item.status === "current");
+  assert.deepEqual(currentListings.map((item) => item.id), ["east-rockaway-ranch"]);
+});
+
+test("draft Zillow links stay on neighborhood results instead of unowned address pages", () => {
+  const draftListings = data.listings.filter((item) => item.status !== "current");
+
+  assert.equal(draftListings.length, 5);
+  for (const listing of draftListings) {
+    assert.doesNotMatch(
+      listing.zillow_url,
+      /\/homedetails\//,
+      `${listing.id} should use a neighborhood Zillow URL until the property URL is confirmed`
+    );
+  }
+});

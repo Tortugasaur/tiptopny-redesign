@@ -27,9 +27,26 @@ test("uses brand red echoing tiptopny.com", () => {
   assert.match(css, /--red:\s*#c5302a/);
 });
 
-test("hero uses the real Myrtle Avenue storefront photo", () => {
-  assert.match(css, /assets\/tiptop\/tiptop-realty-myrtle-avenue-storefront\.png/);
+test("hero uses a property photo while about pairs the storefront with John's portrait", () => {
+  assert.match(css, /assets\/tiptop\/flushing-sanford-avenue-apartment-building\.jpg/);
+  assert.match(html, /assets\/tiptop\/tiptop-realty-myrtle-avenue-storefront-no-pole\.png/);
+  assert.match(html, /assets\/tiptop\/tiptop-realty-profile-photo\.jpg/);
   assert.doesNotMatch(html + css, /images\.unsplash\.com/);
+});
+
+test("John's about portrait lives in the text flow instead of a separate grid column", () => {
+  const aboutCopyStart = html.indexOf('<div class="about-copy">');
+  const aboutCopyEnd = html.indexOf("</div>", aboutCopyStart);
+  const aboutPersonStart = html.indexOf('<figure class="about-person">');
+
+  assert.ok(aboutCopyStart >= 0, "missing about copy block");
+  assert.ok(aboutPersonStart > aboutCopyStart, "John portrait should appear after about copy starts");
+  assert.ok(
+    aboutPersonStart < aboutCopyEnd,
+    "John portrait should live inside .about-copy so text wraps around it"
+  );
+  assert.doesNotMatch(html, /class="about-story"/);
+  assert.doesNotMatch(css, /\.about-story\b/);
 });
 
 test("primary CTAs are call the office and view listings", () => {
@@ -46,10 +63,79 @@ test("contact map button uses the company Google Maps place link", () => {
   assert.match(html, /href="https:\/\/maps\.app\.goo\.gl\/M4WhyBm2s22YqgWi7"/);
 });
 
+test("contact section includes Glendale communication affordances in modern form", () => {
+  assert.match(html, /href="sms:\+17185411077"[^>]*>Text \(718\) 541&#8209;1077<\/a>/);
+  assert.match(html, /href="https:\/\/www\.facebook\.com\/112125607136240"/);
+  assert.match(html, /class="inquiry-form"/);
+  assert.match(html, /mailto:info@tiptopny\.com/);
+});
+
+test("contact section organizes office details, inquiry form, and map", () => {
+  assert.match(css, /\.contact-grid\s*\{[^}]*align-items:\s*start/s);
+  assert.match(css, /\.contact-card\s*\{[^}]*grid-column:\s*1/s);
+  assert.match(css, /\.inquiry-form\s*\{[^}]*grid-column:\s*2/s);
+  assert.match(css, /\.inquiry-form\s*\{[^}]*grid-row:\s*1\s*\/\s*span\s*2/s);
+});
+
+test("contact map uses an interactive Google Maps embed with fallback link", () => {
+  const expectedEmbed =
+    "https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m2!2m1!1s61-06+Myrtle+Avenue,+Glendale,+NY+11385";
+
+  assert.match(html, /class="contact-map"/);
+  assert.match(html, /<iframe[^>]+title="Interactive Google map to TipTop Realty Management Corp\."/);
+  assert.match(html, new RegExp(`src="${expectedEmbed.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  assert.match(html, /loading="eager"/);
+  assert.match(html, /class="map-link"[\s\S]*href="https:\/\/maps\.app\.goo\.gl\/M4WhyBm2s22YqgWi7"/);
+  assert.doesNotMatch(html, /google\.com\/maps\?q=|output=embed|maps\/api\/js|key=/i);
+});
+
+test("listing cards offer a text action without removing the phone action", () => {
+  assert.match(html, /href="sms:\+17185411077"[^>]*>Text for details<\/a>/);
+  assert.match(html, /href="tel:\+17184170100"[^>]*>Call the office<\/a>/);
+});
+
+test("listing cards distinguish the Zillow listing from neighborhood Zillow results", () => {
+  assert.equal(listings.length, 6);
+  assert.match(
+    html,
+    /The East Rockaway card opens its Zillow listing; the remaining Zillow links open\s+neighborhood results while details are being confirmed\./
+  );
+  assert.match(html, /"View this listing on Zillow"/);
+  assert.match(html, /"View neighborhood on Zillow"/);
+  assert.match(html, /\$\{zillowLinkLabel\(l\)\} &rarr;/);
+  assert.match(html, /status === "current"/);
+  assert.doesNotMatch(html, /Compare nearby on Zillow/);
+  assert.doesNotMatch(html, /View on Zillow/);
+});
+
+test("public copy does not present Zillow links as verified property-specific links", () => {
+  assert.doesNotMatch(
+    html,
+    /verified\s+(?:property|listing|Zillow)|property-specific|confirmed\s+Zillow|live\s+Zillow/i
+  );
+});
+
+test("header phone block exposes live office status while keeping the phone link", () => {
+  assert.match(html, /class="cta-call-label"[^>]*data-office-status=/);
+  assert.match(html, /Open now/);
+  assert.match(html, /Closed now/);
+  assert.match(html, /function isOfficeOpen|const isOfficeOpen/);
+  assert.match(html, /href="tel:\+17184170100"/);
+});
+
 test("nav links cover Listings, Services, About, Contact", () => {
   for (const label of ["Listings", "Services", "About", "Contact"]) {
     assert.match(html, new RegExp(`<a href="#${label.toLowerCase()}">${label}<\\/a>`));
   }
+});
+
+test("sticky nav anchors offset section targets below the header", () => {
+  assert.match(css, /--anchor-offset:/);
+  assert.doesNotMatch(css, /scroll-padding-top:\s*var\(--anchor-offset\)/);
+  assert.match(
+    css,
+    /#listings,\s*#services,\s*#about,\s*#contact\s*{[^}]*scroll-margin-top:\s*var\(--anchor-offset\)/s
+  );
 });
 
 test("index.html keeps the JSON listings mount flow", () => {

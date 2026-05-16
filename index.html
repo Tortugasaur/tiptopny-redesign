@@ -65,7 +65,11 @@
           <a href="#contact">Contact</a>
         </nav>
         <a class="cta-call" href="tel:+17184170100">
-          <span class="cta-call-label">Office</span>
+          <span
+            class="cta-call-label"
+            data-office-status="closed"
+            aria-label="Office closed now. Hours are Monday through Friday, 9 to 5."
+          >Closed now</span>
           <span class="cta-call-num">(718) 417&#8209;0100</span>
         </a>
       </div>
@@ -73,7 +77,7 @@
 
     <main id="main">
       <section id="top" class="hero" aria-labelledby="hero-title">
-        <div class="hero-photo" role="img" aria-label="The TipTop Realty office at 61-06 Myrtle Avenue, Glendale, Queens"></div>
+        <div class="hero-photo" role="img" aria-label="A TipTop Realty apartment building listing in Queens"></div>
         <div class="hero-inner">
           <p class="hero-eyebrow">Queens &middot; Brooklyn &middot; Long Island</p>
           <h1 id="hero-title">
@@ -129,6 +133,10 @@
           <p class="section-deck">
             Featured properties available right now. Prices, set&#8209;ups, and showing details
             confirmed by phone &mdash; real estate in New York moves faster than any website.
+          </p>
+          <p class="listing-note">
+            The East Rockaway card opens its Zillow listing; the remaining Zillow links open
+            neighborhood results while details are being confirmed.
           </p>
         </header>
 
@@ -190,6 +198,14 @@
           <div class="about-copy">
             <p class="section-label">About</p>
             <h2 id="about-title">A neighborhood team for complex New York property decisions.</h2>
+            <figure class="about-person">
+              <img
+                src="assets/tiptop/tiptop-realty-profile-photo.jpg"
+                alt="John of TipTop Realty Management Corp."
+                loading="lazy"
+              />
+              <figcaption>John at the TipTop office.</figcaption>
+            </figure>
             <p class="about-lead">
               TipTop works across residential, multifamily, rental, commercial, and mixed-use
               properties. We help owners evaluate opportunities, untangle affordability and
@@ -220,7 +236,7 @@
             <h2 id="contact-title">Start with a phone call.</h2>
             <p class="section-deck">
               Tell TipTop what you&rsquo;re trying to buy, sell, rent, or manage. The office is open
-              weekdays.
+              weekdays, with weekend texts available for active questions.
             </p>
           </div>
           <aside class="contact-card">
@@ -236,12 +252,23 @@
                 <dd><a href="tel:+17184170100">(718) 417&#8209;0100</a></dd>
               </div>
               <div>
+                <dt>Weekends</dt>
+                <dd><a href="sms:+17185411077">Text (718) 541&#8209;1077</a></dd>
+              </div>
+              <div>
                 <dt>Hours</dt>
                 <dd>Mon &ndash; Fri, 9 to 5</dd>
               </div>
               <div>
-                <dt>Weekends</dt>
-                <dd>By appointment</dd>
+                <dt>Social</dt>
+                <dd>
+                  <a
+                    href="https://www.facebook.com/112125607136240"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit TipTop Realty on Facebook"
+                  >Facebook</a>
+                </dd>
               </div>
             </dl>
             <a
@@ -253,6 +280,53 @@
               Open in Google Maps &rarr;
             </a>
           </aside>
+          <form
+            class="inquiry-form"
+            action="mailto:info@tiptopny.com"
+            method="post"
+            enctype="text/plain"
+          >
+            <h3>Send a note</h3>
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button class="btn btn-primary inquiry-submit" type="submit">Send</button>
+          </form>
+        </div>
+        <div class="contact-map" aria-label="Interactive office map">
+          <div class="map-head">
+            <div>
+              <p class="map-label">Office location</p>
+              <h3>61&#8209;06 Myrtle Avenue</h3>
+              <p>Glendale, NY 11385</p>
+            </div>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/M4WhyBm2s22YqgWi7"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open in Google Maps &rarr;
+            </a>
+          </div>
+          <div class="map-frame">
+            <iframe
+              title="Interactive Google map to TipTop Realty Management Corp."
+              src="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m2!2m1!1s61-06+Myrtle+Avenue,+Glendale,+NY+11385"
+              loading="eager"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
       </section>
     </main>
@@ -271,10 +345,73 @@
     </footer>
 
     <script>
+      (() => {
+        const officeStatus = document.querySelector(".cta-call-label[data-office-status]");
+        if (!officeStatus) return;
+
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/New_York",
+          weekday: "short",
+          hour: "2-digit",
+          minute: "2-digit",
+          hourCycle: "h23",
+        });
+        const weekdays = new Set(["Mon", "Tue", "Wed", "Thu", "Fri"]);
+
+        const isOfficeOpen = (now = new Date()) => {
+          const parts = Object.fromEntries(
+            formatter.formatToParts(now).map((part) => [part.type, part.value])
+          );
+          const minutes = Number(parts.hour) * 60 + Number(parts.minute);
+
+          return weekdays.has(parts.weekday) && minutes >= 9 * 60 && minutes < 17 * 60;
+        };
+
+        const updateOfficeStatus = (now = new Date()) => {
+          const open = isOfficeOpen(now);
+          const text = open ? "Open now" : "Closed now";
+
+          officeStatus.dataset.officeStatus = open ? "open" : "closed";
+          officeStatus.textContent = text;
+          officeStatus.setAttribute(
+            "aria-label",
+            `${text}. Hours are Monday through Friday, 9 to 5.`
+          );
+        };
+
+        updateOfficeStatus();
+        setInterval(updateOfficeStatus, 60 * 1000);
+      })();
+
+      (() => {
+        const inquiryForm = document.querySelector(".inquiry-form");
+        if (!inquiryForm) return;
+
+        inquiryForm.addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          const data = new FormData(inquiryForm);
+          const name = String(data.get("name") || "").trim();
+          const email = String(data.get("email") || "").trim();
+          const message = String(data.get("message") || "").trim();
+          const body = [
+            name && `Name: ${name}`,
+            email && `Email: ${email}`,
+            message && `Message:\n${message}`,
+          ].filter(Boolean).join("\n\n");
+
+          window.location.href = `mailto:info@tiptopny.com?subject=${encodeURIComponent(
+            "TipTop website inquiry"
+          )}&body=${encodeURIComponent(body)}`;
+        });
+      })();
+
       (async () => {
         const res = await fetch("listings.json");
         const { listings } = await res.json();
         const escape = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+        const zillowLinkLabel = (l) =>
+          l.status === "current" ? "View this listing on Zillow" : "View neighborhood on Zillow";
 
         const cardInner = (l) => `
           <div class="card-image">
@@ -287,8 +424,9 @@
             <p class="card-price">${escape(l.price)}</p>
             <p class="card-copy">${escape(l.description)}</p>
             <div class="card-actions">
-              <a class="zillow-link" href="${escape(l.zillow_url)}" target="_blank" rel="noopener noreferrer">View on Zillow &rarr;</a>
+              <a class="zillow-link" href="${escape(l.zillow_url)}" target="_blank" rel="noopener noreferrer">${zillowLinkLabel(l)} &rarr;</a>
               <a class="card-call" href="tel:+17184170100">Call the office</a>
+              <a class="card-text" href="sms:+17185411077">Text for details</a>
             </div>
           </div>
         `;

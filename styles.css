@@ -40,10 +40,20 @@
   /* Layout */
   --max-w: 1280px;
   --gutter: clamp(20px, 4vw, 56px);
+  --anchor-offset: 112px;
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
+
+#listings,
+#services,
+#about,
+#contact {
+  scroll-margin-top: var(--anchor-offset);
+}
 
 .modern-body {
   margin: 0;
@@ -172,6 +182,10 @@ a:focus-visible, button:focus-visible {
   text-transform: uppercase;
   color: var(--muted);
 }
+.cta-call-label[data-office-status="open"] { color: var(--red); }
+
+.cta-call-label[data-office-status="closed"] { color: var(--muted); }
+
 .cta-call-num {
   font-family: var(--display);
   font-size: clamp(18px, 1.8vw, 22px);
@@ -198,7 +212,7 @@ a:focus-visible, button:focus-visible {
   aspect-ratio: 16 / 9;
   background:
     linear-gradient(180deg, rgba(14, 14, 14, 0.0) 0%, rgba(14, 14, 14, 0.5) 100%),
-    url("assets/tiptop/tiptop-realty-myrtle-avenue-storefront.png") center / cover;
+    url("assets/tiptop/flushing-sanford-avenue-apartment-building.jpg") center / cover;
   border-radius: 4px;
 }
 
@@ -384,6 +398,14 @@ a:focus-visible, button:focus-visible {
 }
 .section-deck.light { color: var(--night-mute); }
 
+.listing-note {
+  margin: 14px 0 0;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
 /* =========================================================
    Listings
    ========================================================= */
@@ -505,6 +527,13 @@ a:focus-visible, button:focus-visible {
 }
 .card-call:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
+.card-text {
+  color: var(--red);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+.card-text:hover { color: var(--red-deep); }
+
 /* Featured listing — full-width, image-left/copy-right */
 .listing-featured {
   display: grid;
@@ -610,9 +639,16 @@ a:focus-visible, button:focus-visible {
 
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 5vw, 80px);
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  gap: clamp(30px, 4.5vw, 68px);
   align-items: center;
+}
+
+.about-copy { min-width: 0; }
+.about-copy::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .about-copy h2 {
@@ -650,19 +686,38 @@ a:focus-visible, button:focus-visible {
   color: var(--red);
 }
 
-.about-figure { margin: 0; }
-.about-figure img {
+.about-person {
+  float: right;
+  width: clamp(150px, 15vw, 180px);
+  margin: 4px 0 14px 24px;
+}
+.about-person img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center top;
   border-radius: 4px;
 }
+.about-person figcaption,
 .about-figure figcaption {
   margin-top: 10px;
   font-family: var(--sans);
   font-size: 12.5px;
   color: var(--muted);
   font-style: italic;
+}
+
+.about-figure {
+  width: 100%;
+  margin: 0;
+  justify-self: stretch;
+}
+.about-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 58%;
+  border-radius: 4px;
 }
 
 /* =========================================================
@@ -679,10 +734,12 @@ a:focus-visible, button:focus-visible {
   max-width: var(--max-w);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 460px);
-  gap: clamp(28px, 5vw, 64px);
-  align-items: center;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
 }
+
+.contact-head { align-self: start; }
 
 .contact-head h2 {
   margin: 0 0 14px;
@@ -695,6 +752,7 @@ a:focus-visible, button:focus-visible {
 }
 
 .contact-card {
+  grid-column: 1;
   background: var(--bg);
   padding: clamp(28px, 3vw, 40px);
   border: 1px solid var(--hairline);
@@ -766,6 +824,152 @@ a:focus-visible, button:focus-visible {
 
 .cc-cta { width: 100%; justify-content: center; }
 
+.inquiry-form {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+  display: grid;
+  gap: 13px;
+  background: var(--bg);
+  padding: clamp(24px, 2.6vw, 34px);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  box-shadow: 0 18px 38px -30px rgba(14, 14, 14, 0.28);
+}
+
+.inquiry-form h3 {
+  margin: 0 0 2px;
+  font-family: var(--display);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.inquiry-form label {
+  display: grid;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.inquiry-form input,
+.inquiry-form textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 15px/1.45 var(--sans);
+  letter-spacing: 0;
+  padding: 11px 12px;
+}
+
+.inquiry-form textarea {
+  resize: vertical;
+  min-height: 116px;
+}
+
+.inquiry-form input:focus,
+.inquiry-form textarea:focus {
+  border-color: var(--red);
+  outline: 2px solid rgba(197, 48, 42, 0.16);
+  outline-offset: 0;
+}
+
+.inquiry-submit {
+  width: 100%;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+}
+
+.contact-map {
+  max-width: var(--max-w);
+  margin: clamp(28px, 4vw, 48px) auto 0;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  box-shadow: 0 24px 50px -32px rgba(14, 14, 14, 0.24);
+  background:
+    linear-gradient(135deg, rgba(197, 48, 42, 0.08), rgba(197, 48, 42, 0) 42%),
+    var(--bg);
+}
+
+.map-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(20px, 4vw, 48px);
+  padding: clamp(24px, 3vw, 38px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.map-label {
+  margin: 0 0 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.contact-map h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(30px, 4.2vw, 54px);
+  font-weight: 400;
+  line-height: 0.95;
+  color: var(--ink);
+}
+
+.contact-map p:not(.map-label) {
+  margin: 12px 0 0;
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--muted);
+}
+
+.map-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  color: var(--ink);
+  font: 800 12px/1 var(--mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.map-link:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.map-frame {
+  min-height: clamp(340px, 38vw, 480px);
+  background: var(--bg-3);
+}
+
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  min-height: inherit;
+  height: 100%;
+  border: 0;
+  filter: saturate(0.94) contrast(0.98);
+}
+
 /* =========================================================
    Footer
    ========================================================= */
@@ -834,10 +1038,11 @@ a:focus-visible, button:focus-visible {
   .listing-featured { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
   .about-figure { order: -1; }
-  .about-figure img { aspect-ratio: 4 / 3; }
 }
 
 @media (max-width: 760px) {
+  :root { --anchor-offset: 148px; }
+
   .bar-inner { grid-template-columns: 1fr auto; gap: 12px; }
   .nav { grid-column: 1 / -1; justify-content: flex-start; overflow-x: auto; padding-top: 4px; border-top: 1px solid var(--hairline); margin-top: 4px; }
   .cta-call { border-left: 0; padding-left: 0; }
@@ -850,7 +1055,24 @@ a:focus-visible, button:focus-visible {
   .trust-strip li:nth-child(2) { border-right: 0; }
   .trust-strip li:nth-child(1), .trust-strip li:nth-child(2) { border-bottom: 1px solid var(--hairline); }
 
+  .about-person {
+    float: none;
+    width: min(100%, 280px);
+    margin: 0 0 18px;
+  }
+
   .contact-grid { grid-template-columns: 1fr; }
+  .contact-card,
+  .inquiry-form {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .map-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .map-link { width: 100%; }
+  .map-frame { min-height: 300px; }
 
   .foot-inner { grid-template-columns: 1fr 1fr; }
   .foot-mark { grid-column: 1 / -1; }
