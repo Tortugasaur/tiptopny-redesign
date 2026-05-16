@@ -195,12 +195,12 @@ test("mobile masthead wordmark scales inside narrow screens", async () => {
   assert.match(smallViewportBlock[0], /\.masthead\s*\{[^}]*overflow-x:\s*clip/);
 });
 
-test("contact includes mailto inquiry, Facebook, and no-key embedded map", async () => {
+test("contact includes mailto inquiry, Facebook, and matching Google office map", async () => {
   const html = await readText("../index.html");
   const css = await readText("../styles.css");
 
   const embedUrl =
-    "https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m2!2m1!1s61-06+Myrtle+Avenue,+Glendale,+NY+11385";
+    "https://www.google.com/maps?q=61-06%20Myrtle%20Avenue%2C%20Glendale%2C%20NY%2011385&amp;output=embed";
 
   assert.match(html, /class="inquiry-form"/);
   assert.match(html, /new FormData\(inquiryForm\)/);
@@ -210,13 +210,15 @@ test("contact includes mailto inquiry, Facebook, and no-key embedded map", async
   assert.match(html, /href="https:\/\/www\.facebook\.com\/112125607136240"/);
   assert.match(html, /aria-label="Visit Facebook"/);
   assert.match(html, /class="[^"]*\bmap-card\b[^"]*"/);
-  assert.match(html, /<iframe[^>]+title="Map to TipTop Realty Management Corp\."/);
+  assert.match(html, /<iframe[^>]+class="office-map"/);
+  assert.match(html, /title="Map to TipTop Realty Management Corp\."/);
   assert.match(html, new RegExp(`src="${embedUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
-  assert.match(html, /loading="eager"/);
+  assert.match(html, /loading="lazy"/);
   assert.match(html, /class="map-fallback-link"/);
-  assert.doesNotMatch(html, /maps\/api\/js|key=/i);
+  assert.doesNotMatch(html, /maps\/api\/js|key=|about:blank|openstreetmap/i);
   assert.match(css, /\.inquiry-form\s*\{/);
   assert.match(css, /\.office-social-icon\s*\{/);
   assert.match(css, /\.map-card\s*\{/);
+  assert.match(css, /\.office-map\s*\{/);
   assert.match(css, /\.map-fallback-link\s*\{/);
 });
