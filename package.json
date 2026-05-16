@@ -1,5 +1,9 @@
 {
   "scripts": {
-    "dev": "python3 -m http.server 5173"
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort"
+  },
+  "devDependencies": {
+    "vite": "^8.0.13"
   }
 }

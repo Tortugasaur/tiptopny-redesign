@@ -10,10 +10,12 @@ column rules, hairlines between sections.
 ## Run locally
 
 ```bash
-npm run dev   # python3 -m http.server 5173
+npm install
+npm run dev
 ```
 
-Then open <http://localhost:5173>.
+Then open <http://127.0.0.1:5173>. If port `5173` is busy, stop the old
+server and rerun `npm run dev`.
 
 ## Files
 
