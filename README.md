@@ -1,17 +1,16 @@
-# TipTop Realty — `design/modern-broker`
+# TipTop Realty — `design/modern-landlord-hybrid`
 
-The third demo direction for John. **"What tiptopny.com would look like if a
-2026 broker designer cleaned it up."** Closest in spirit to the active
-tiptopny.com site (red brand, photo-led hero, services + listings + contact
-sections), but with the dated WordPress feel stripped out.
+The fourth demo direction for John: **modern broker polish with Glendale local trust,
+re-angled around landlord services.**
 
-White base, brand red `#c5302a` (echoing the active site), Instrument Serif
-italic accents on top of a confident Inter sans, JetBrains Mono numerics for
-prices. Sticky header with phone CTA, full-bleed photo hero with overlaid
-card, red "specialist services" banner, clean editorial listings grid, dark
-services band, photo-anchored about section, contact card.
+This branch starts from `design/modern-broker`, keeps the clean professional
+structure, warms down the bright white palette, and pulls in the strongest Glendale
+signal: real Myrtle Avenue office trust. The strategy is no longer "lead with
+listings." The homepage now leads with practical support for NYC landlords and
+building owners navigating DHCR, rent stabilization, attorney handoff, and
+property-management admin.
 
-## Run locally
+## Run Locally
 
 ```bash
 npm install
@@ -23,42 +22,46 @@ server and rerun `npm run dev`.
 
 ## Files
 
-- `index.html` — single-page semantic markup, anchor nav
-- `styles.css` — all styles, no framework
+- `index.html` — single-page semantic markup, anchor nav, landlord-services copy
+- `styles.css` — modern-broker visual system with Myrtle Avenue storefront hero
 - `favicon.svg` — TT in brand red on white
 - `listings.json` — listings data shared with admin page
-- `admin.html` — internal dashboard mockup (same as on the storefront branch)
-- `tests/` — node --test smoke tests (27 passing)
+- `admin.html` — internal listings dashboard mockup
+- `tests/` — node --test smoke tests
 
 No build step, no JS framework. Static deploys anywhere.
 
-## Position alongside the other directions
+## Position Alongside The Other Directions
 
-| Branch | Aesthetic |
-|---|---|
-| `design/glendale-storefront` | Warm family-business storefront (awning, painted window, hand script). Luigi is actively polishing this one. |
-| `design/newsprint` | NYC editorial newspaper (Fraunces + Source Serif, classifieds-grid, drop cap). |
-| `design/modern-broker` (this) | Clean modern brokerage closest in spirit to the active tiptopny.com — brand red, photo-led, professional. |
+| Branch | Aesthetic | Strategy fit |
+|---|---|---|
+| `design/modern-landlord-hybrid` (this) | Clean modern professional site with real office/local trust. | Best fit for the new landlord-services concept. |
+| `design/modern-broker` | Clean modern brokerage closest to the active tiptopny.com. | Safest old base, but too sales/listings-led now. |
+| `design/glendale-storefront` | Warm family-business storefront. | Best emotional/local trust, but softer for compliance/admin work. |
+| `design/newsprint` | NYC editorial newspaper/classifieds style. | Memorable wildcard, but less safe for legal-adjacent owner services. |
 
-## Polish state
+## Polish State
 
 - [x] Favicon (SVG, brand red, modern)
 - [x] Open Graph + Twitter card meta
 - [x] Real address, phone, hours, services
 - [x] Mobile-first responsive
 - [x] Semantic HTML5 landmarks
-- [x] Real TipTop listing photos
-- [x] Listings driven by `listings.json` (single source of truth)
+- [x] Real TipTop photography
+- [x] Landlord-services hero and primary CTA
+- [x] Glendale/Myrtle Avenue trust cues in a modern layout
+- [x] Warmer, less bright visual tone
+- [x] Legal-adjacent boundary language
+- [x] Listings driven by `listings.json` but kept secondary
 - [x] Zillow buttons distinguish the East Rockaway listing from neighborhood results
 - [x] Internal admin dashboard at `admin.html` (unlinked from public nav)
-- [ ] Remaining real Zillow URLs from John (draft listings use Zillow neighborhood pages)
+- [ ] John-approved service wording, disclaimers, attorney-boundary language
+- [ ] Remaining real Zillow URLs from John if listings stay on the site
 - [ ] Lighthouse 90+ verified post-deploy
 
-## Internal admin page
+## Internal Admin Page
 
-`admin.html` is a static mockup of an internal listings dashboard. It
-reads the same `listings.json` as the public site and renders a table
-with status pills (`current` / `needs_sync` / `unknown`) and a no-op
-"Mark synced" button. Not linked from the public navigation; opt-in
-via direct URL `/admin.html`. No auth — defer until John signals he
-wants the dashboard for real.
+`admin.html` is still the inherited static listings dashboard mockup. For this
+direction, the stronger future internal tool is probably not listings sync; it is a
+landlord case intake packet or owner/admin checklist workflow. Keep the dashboard as
+scaffolding until John confirms the real recurring workflow.
