@@ -1223,6 +1223,7 @@ a:focus-visible, button:focus-visible {
   .listings-grid { grid-template-columns: 1fr; }
   .services-grid { grid-template-columns: 1fr; }
   .trust-strip { grid-template-columns: 1fr; }
+  .trust-strip li:not(:first-child) { padding-left: 0; }
   .trust-strip li:nth-child(even) { padding-left: 0; }
   .trust-strip li { border-right: 0; border-bottom: 1px solid var(--hairline); }
   .trust-strip li:last-child { border-bottom: 0; }

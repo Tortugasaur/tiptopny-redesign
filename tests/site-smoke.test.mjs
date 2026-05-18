@@ -104,6 +104,7 @@ test("trust strip copy has breathing room after vertical dividers", () => {
   assert.match(css, /\.trust-strip li:not\(:first-child\)\s*\{[^}]*padding-left:\s*clamp\(18px,\s*2vw,\s*24px\)/s);
   assert.match(css, /@media \(max-width:\s*760px\)[\s\S]*\.trust-strip li:nth-child\(even\)\s*\{[^}]*padding-left:\s*clamp\(18px,\s*2vw,\s*24px\)/s);
   assert.match(css, /@media \(max-width:\s*560px\)[\s\S]*\.trust-strip li:nth-child\(even\)\s*\{[^}]*padding-left:\s*0/s);
+  assert.match(css, /@media \(max-width:\s*560px\)[\s\S]*\.trust-strip li:not\(:first-child\)\s*\{[^}]*padding-left:\s*0/s);
 });
 
 test("uses brand red echoing tiptopny.com", () => {
