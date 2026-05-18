@@ -688,15 +688,25 @@ a:focus-visible, button:focus-visible {
 
 .about-person {
   float: right;
-  width: clamp(150px, 15vw, 180px);
+  width: clamp(170px, 16vw, 210px);
   margin: 4px 0 14px 24px;
 }
-.about-person img {
+.about-person-frame {
+  display: block;
   width: 100%;
   aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center top;
+  overflow: hidden;
   border-radius: 4px;
+  background: #d8d1c3;
+}
+.about-person img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.35);
+  transform-origin: 42% 32%;
 }
 .about-person figcaption,
 .about-figure figcaption {

@@ -27,10 +27,10 @@ test("uses brand red echoing tiptopny.com", () => {
   assert.match(css, /--red:\s*#c5302a/);
 });
 
-test("hero uses a property photo while about pairs the storefront with John's portrait", () => {
+test("hero uses a property photo while about pairs the storefront with John's better headshot", () => {
   assert.match(css, /assets\/tiptop\/flushing-sanford-avenue-apartment-building\.jpg/);
   assert.match(html, /assets\/tiptop\/tiptop-realty-myrtle-avenue-storefront-no-pole\.png/);
-  assert.match(html, /assets\/tiptop\/tiptop-realty-profile-photo\.jpg/);
+  assert.match(html, /assets\/tiptop\/better-headshot\.png/);
   assert.doesNotMatch(html + css, /images\.unsplash\.com/);
 });
 
@@ -47,6 +47,14 @@ test("John's about portrait lives in the text flow instead of a separate grid co
   );
   assert.doesNotMatch(html, /class="about-story"/);
   assert.doesNotMatch(css, /\.about-story\b/);
+});
+
+test("John's better headshot is cropped inside a controlled portrait frame", () => {
+  assert.match(html, /class="about-person-frame"/);
+  assert.match(css, /\.about-person-frame\s*\{[^}]*aspect-ratio:\s*3\s*\/\s*4/s);
+  assert.match(css, /\.about-person-frame\s*\{[^}]*overflow:\s*hidden/s);
+  assert.match(css, /\.about-person img\s*\{[^}]*transform:\s*scale\(1\.35\)/s);
+  assert.match(css, /\.about-person img\s*\{[^}]*transform-origin:\s*42%\s*32%/s);
 });
 
 test("primary CTAs are call the office and view listings", () => {
@@ -186,6 +194,7 @@ test("assets/tiptop has the named TipTop photo set", async () => {
     "brick-three-family-exterior.jpg",
     "east-rockaway-waverly-park-ranch.jpg",
     "flushing-sanford-avenue-apartment-building.jpg",
+    "better-headshot.png",
   ]) {
     assert.ok(assets.includes(required), `missing required asset ${required}`);
   }
