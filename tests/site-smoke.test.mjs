@@ -307,7 +307,8 @@ test("sticky nav anchors offset section targets below the header", () => {
 test("index.html keeps the JSON listings mount flow", () => {
   assert.match(html, /id="listings-mount"/);
   assert.match(html, /data-listing-limit="5"/);
-  assert.match(html, /fetch\(["']listings\.json["']\)/);
+  assert.match(html, /const listingsUrl = new URL\("\.\/listings\.json", import\.meta\.url\)\.href;/);
+  assert.match(html, /fetch\(listingsUrl\)/);
 });
 
 test("index.html no longer hardcodes the Ridgewood listing markup", () => {
@@ -329,6 +330,27 @@ test("listing data keeps live TipTop image and Zillow groupings", () => {
     assert.equal(listing.neighborhood, neighborhood);
     assert.equal(listing.price, price);
     assert.match(listing.zillow_url, /^https:\/\/(www\.)?zillow\.com\//);
+  }
+});
+
+test("listing photos are promoted into Vite's static asset graph", () => {
+  const assetMapMatch = html.match(/const listingPhotoAssets = \{([\s\S]*?)\};/);
+
+  assert.ok(
+    assetMapMatch,
+    "index.html should declare listingPhotoAssets so JSON-only listing images are emitted by Vite"
+  );
+  assert.match(html, /<script type="module">/);
+  assert.match(html, /const listingPhotoSrc = \(l\) => listingPhotoAssets\[l\.photo\] \|\| l\.photo;/);
+  assert.match(html, /<img src="\$\{escape\(listingPhotoSrc\(l\)\)\}"/);
+
+  for (const listing of listings) {
+    const escapedPhoto = listing.photo.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.match(
+      assetMapMatch[1],
+      new RegExp(`"${escapedPhoto}":\\s*new URL\\("\\./${escapedPhoto}",\\s*import\\.meta\\.url\\)\\.href`),
+      `${listing.photo} should be statically referenced for Vite`
+    );
   }
 });
 

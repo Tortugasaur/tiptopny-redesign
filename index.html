@@ -364,7 +364,7 @@
       </div>
     </footer>
 
-    <script>
+    <script type="module">
       (() => {
         const officeStatus = document.querySelector(".cta-call-label[data-office-status]");
         if (!officeStatus) return;
@@ -427,15 +427,25 @@
       })();
 
       (async () => {
-        const res = await fetch("listings.json");
+        const listingPhotoAssets = {
+          "assets/tiptop/ridgewood-16-unit-multifamily-building.jpg": new URL("./assets/tiptop/ridgewood-16-unit-multifamily-building.jpg", import.meta.url).href,
+          "assets/tiptop/bushwick-legal-12-family-building.jpg": new URL("./assets/tiptop/bushwick-legal-12-family-building.jpg", import.meta.url).href,
+          "assets/tiptop/bushwick-six-family-249-stockholm-street.jpg": new URL("./assets/tiptop/bushwick-six-family-249-stockholm-street.jpg", import.meta.url).href,
+          "assets/tiptop/brick-three-family-exterior.jpg": new URL("./assets/tiptop/brick-three-family-exterior.jpg", import.meta.url).href,
+          "assets/tiptop/east-rockaway-waverly-park-ranch.jpg": new URL("./assets/tiptop/east-rockaway-waverly-park-ranch.jpg", import.meta.url).href,
+          "assets/tiptop/flushing-sanford-avenue-apartment-building.jpg": new URL("./assets/tiptop/flushing-sanford-avenue-apartment-building.jpg", import.meta.url).href,
+        };
+        const listingsUrl = new URL("./listings.json", import.meta.url).href;
+        const res = await fetch(listingsUrl);
         const { listings } = await res.json();
         const escape = (s) => String(s).replace(/[&<>"']/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+        const listingPhotoSrc = (l) => listingPhotoAssets[l.photo] || l.photo;
         const zillowLinkLabel = (l) =>
           l.status === "current" ? "View this listing on Zillow" : "View neighborhood on Zillow";
 
         const cardInner = (l) => `
           <div class="card-image">
-            <img src="${escape(l.photo)}" alt="${escape(l.photo_alt)}" loading="lazy" />
+            <img src="${escape(listingPhotoSrc(l))}" alt="${escape(l.photo_alt)}" loading="lazy" />
             ${l.featured ? '<span class="card-flag">Featured</span>' : ""}
           </div>
           <div class="card-body">
