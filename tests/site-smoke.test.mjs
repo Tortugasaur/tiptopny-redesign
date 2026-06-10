@@ -33,16 +33,17 @@ test("keeps the newspaper direction without public draft language", async () => 
   );
 });
 
-test("social preview metadata uses TipTop assets and no Unsplash", async () => {
+test("social preview metadata uses the TipTop logo card and no Unsplash", async () => {
   const html = await readText("../index.html");
-  const previewAsset = "assets/tiptop/flushing-sanford-avenue-apartment-building.jpg";
+  const previewAsset = "assets/tiptop/tiptop-realty-social-card.png";
+  const previewUrl = "https://news.callhermes.us/assets/tiptop/tiptop-realty-social-card.png?v=20260518";
   const stats = await stat(new URL(`../${previewAsset}`, import.meta.url));
 
   assert.ok(stats.isFile(), `${previewAsset} should exist`);
-  assert.match(html, new RegExp(`property="og:image"\\s+content="${previewAsset}"`));
-  assert.match(html, new RegExp(`name="twitter:image"\\s+content="${previewAsset}"`));
-  assert.match(html, /property="og:image:width" content="1800"/);
-  assert.match(html, /property="og:image:height" content="900"/);
+  assert.ok(html.includes(`property="og:image" content="${previewUrl}"`));
+  assert.ok(html.includes(`name="twitter:image" content="${previewUrl}"`));
+  assert.match(html, /property="og:image:width" content="1200"/);
+  assert.match(html, /property="og:image:height" content="630"/);
   assert.doesNotMatch(html, /unsplash|images\.unsplash/i);
 });
 
